@@ -1,42 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 	<head>
-  	<meta charset="utf-8">
-  	<meta name="description" content="Your description goes here">
-  	<meta name="keywords" content="one, two, three">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-		
+		<meta charset="utf-8">
+		<meta name="description" content="Your description goes here">
+		<meta name="keywords" content="one, two, three">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
 		<title>Crochet Counter</title>
 
 		<!-- external CSS link -->
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/style.css">
 	</head>
+
 	<body>
 		<main>
 			<h1>Pattern Picker</h1>
 			<section class="wrapper">
-				<form action="" method="" class="patternPickerForm">
-					<label for="title">Title</label>
+				<form action="#" method="get" class="patternPickerForm">
+					<label for="title">Title:</label>
 					<input id="title" placeholder="Pattern Title" required>
 
-					<label for="author">Author</label>
+					<label for="author">Author:</label>
 					<input id="author" placeholder="Author" required>
 
-					<label for="company1">Company 1</label>
+					<label for="company1">Company 1:</label>
 					<input id="company1" placeholder="Company 1" required>
 
-					<label for="copmany2">Company 2</label>
-					<input id="copmany2" placeholder="Company 2">
+					<label for="company2">Company 2:</label>
+					<input id="company2" placeholder="Company 2">
 
-					<label for="source">Source</label>
+					<label for="source">Source:</label>
 					<input id="source" placeholder="Source">
-
-					<button type="submit" name="getPatternCounter" value="patternCtAvailable">Get Pattern Counter</button>
+                    <button id="loadPattern" type="submit" name="patternLoader" value="loadedPatternAvailable">Load My Pattern</button>
+					<button id="patternCounter" type="submit" name="getPatternCounter" value="patternCtAvailable">Get Pattern
+						Counter</button>
+				   
 				</form>
+				<h2 id="displayTitle"></h2>
+				<h3 id="displayAuthor"></h3>
+				<h4 id="displayCompany1"></h4>
+				<h4 id="displayCompany2"></h4>
+				<h4 id="displaySource"></h4>
 			</section>
 		</main>
 
 		<script type="text/javascript" src="js/main.js"></script>
 	</body>
+
 </html>
