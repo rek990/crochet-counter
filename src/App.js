@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { Flex, Image, Img } from "@chakra-ui/react";
+import "./App.css";
+import MainContainer from "./components/MainContainer";
+import logo from "./MossStitchBlanket.jpg";
 
 function App() {
-  // return (
-  //   <div className="App">
-  //     <header className="App-header">
-  //       <img src={logo} className="App-logo" alt="logo" />
-  //       <p>
-  //         Edit <code>src/App.js</code> and save to reload.
-  //       </p>
-  //       <a
-  //         className="App-link"
-  //         href="https://reactjs.org"
-  //         target="_blank"
-  //         rel="noopener noreferrer"
-  //       >
-  //         Learn React
-  //       </a>
-  //     </header>
-  //   </div>
-  // );
+  return (
+    <Flex
+      className="App"
+      height="100%"
+      alignItems="center"
+      justifyContent="center"
+    >
+      <MainContainer />
+      <Image src={logo} fit="fill" zIndex={-1} />
+    </Flex>
+  );
 }
 
 export default App;
