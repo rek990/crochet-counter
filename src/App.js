@@ -7,12 +7,12 @@ function App() {
   return (
     <Flex
       className="App"
-      height="100%"
+      height="100vh"
       alignItems="center"
       justifyContent="center"
     >
       <MainContainer />
-      <Image src={logo} fit="fill" zIndex={-1} />
+      <Image src={logo} fit="fill" flex={1} maxHeight="98vh" zIndex={-1} />
     </Flex>
   );
 }
