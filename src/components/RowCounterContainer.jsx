@@ -1,4 +1,5 @@
 import { VStack, Flex, Spacer, Heading } from "@chakra-ui/react";
+import RowCounterForm from "./RowCounterForm";
 
 const RowCounterContainer = () => {
   return (
@@ -17,7 +18,8 @@ const RowCounterContainer = () => {
             Stitch Counter
           </Heading>
         </Flex>
-        {/* <RowCounterForm/> */}
+        <RowCounterForm/>
+        {/* Will need an API to add counter functionality based on pattern. When this happens, the <RowCounterForm/> will be the child of this parent component. */}
       </VStack>
     </Flex>
   );
