@@ -12,17 +12,10 @@ import {
   FormHelperText,
   Heading,
   Flex,
+  HStack,
 } from "@chakra-ui/react";
 
-const RowCounterForm = (
-  {
-    // notes,
-    // setNotes,
-    // setCells,
-    // renderedNotes,
-    // setRenderedNotes,
-  }
-) => {
+const RowCounterForm = () => {
   // let [qsoNumber, setQsoNumber] = useState(6);
   // const [callSign, setCallSign] = useState("");
   // const [qsoDate, setQsoDate] = useState("");
@@ -115,19 +108,24 @@ const RowCounterForm = (
         <Grid
           className="stitch-counter-container-grid"
           templateRows="repeat(2, 1fr)"
-          templateColumns="repeat(7, 1fr)"
+          templateColumns="repeat(8, 1fr)"
           gap={5}
           // height={1}
           justifyContent="center"
+          alignItems="center"
+          textAlign="left"
+          background="#A0605F"
+          borderRadius="15px"
+          padding="3%"
         >
-          <GridItem id="row-counter-form" colSpan={3}>
+          <GridItem id="row-counter-form" colSpan={2} colStart={4}>
             <Input
               id="row-number-input"
               placeholder="Enter Row Number"
               size="sm"
               borderRadius="6px"
               border="3px solid"
-              borderColor="#A0605F"
+              borderColor="#5F9EA0"
               bg="white"
               focusBorderColor="#A05F9E"
               errorBorderColor="#FE1100"
@@ -137,117 +135,136 @@ const RowCounterForm = (
               // }}
             ></Input>
           </GridItem>
-          <GridItem id="submit-row-number" colSpan={2}>
-            <Button
-              id="submit-row-button"
-              type="submit"
-              size="sm"
-              bg="#A0605F"
-              color="white"
-              // float="right"
-              // onClick={handleSubmit}
-            >
-              Submit
-            </Button>
+          <GridItem id="submit-reset-buttons" colSpan={2}>
+            <HStack>
+              <Button
+                id="submit-row-button"
+                type="submit"
+                size="sm"
+                bg="#5F9EA0"
+                color="white"
+                // float="right"
+                // onClick={handleSubmit}
+              >
+                Submit Entry
+              </Button>
+              <Button
+                id="reset-row-button"
+                type="reset"
+                size="sm"
+                bg="#5F9EA0"
+                color="white"
+                // float="right"
+                // onClick={handleSubmit}
+              >
+                Reset Entry
+              </Button>
+            </HStack>
           </GridItem>
           <GridItem id="reset-row-input" colSpan={2}>
-            <Button
+            {/* <Button
               id="reset-row-button"
               type="reset"
               size="sm"
-              bg="#A0605F"
+              bg="#5F9EA0"
               color="white"
               // float="right"
               // onClick={handleSubmit}
             >
-              Reset
-            </Button>
+              Reset Entry
+            </Button> */}
           </GridItem>
-          <GridItem id="row-number-label" colSpan={2}>
-         
-          <Flex
-          // width="30vw"
-          height="5vh"
-          bg="#A0605F"
-          borderRadius="15px"
-          justifyContent="center"
-          alignItems="center"
-        >
-          <Heading size="lg" color="#5F9EA0">
-            Row #:
-          </Heading>
-        </Flex>
-          </GridItem>
-          <GridItem id="row-number-output">
-          <Flex height="5vh" borderRadius="15px" border="5px solid #A0605F" justifyContent="center" alignItems="center" color="white">
-          <Heading size="lg" flex={1} alignContent="center">6</Heading>
-          </Flex>
-          </GridItem>
-          <GridItem id="incrementor-button-container">
-          <Button
-              id="incrementor-button"
-              type="button"
-              size="sm"
-              bg="#A0605F"
-              color="white"
-              // float="right"
-              // onClick={handleSubmit}
+          <GridItem id="row-number-label" colSpan={2} colStart={4}>
+            <Flex
+              // width="30vw"
+              height="5vh"
+              bg="#5F9EA0"
+              borderRadius="15px"
+              justifyContent="center"
+              alignItems="center"
             >
-              +
-            </Button>
+              <Heading size="lg" color="white">
+                Row # 6
+              </Heading>
+            </Flex>
           </GridItem>
-          <GridItem id="decrementor-button-container">
-          <Button
-              id="decrementor-button"
-              type="button"
-              size="sm"
-              bg="#A0605F"
+          {/* <GridItem id="row-number-output">
+            <Flex
+              height="5vh"
+              borderRadius="15px"
+              border="5px solid #5F9EA0"
+              justifyContent="center"
+              alignItems="center"
               color="white"
-              // float="right"
-              // onClick={handleSubmit}
             >
-              -
-            </Button>
+              <Heading size="lg" flex={1} textAlign="center">
+                6
+              </Heading>
+            </Flex>
+          </GridItem> */}
+          <GridItem id="stitch-counter-buttons">
+            <HStack>
+              <Button
+                id="incrementor-button"
+                type="button"
+                size="sm"
+                bg="#5F9EA0"
+                color="white"
+                // float="right"
+                // onClick={handleSubmit}
+              >
+                +
+              </Button>
+              <Button
+                id="decrementor-button"
+                type="button"
+                size="sm"
+                bg="#5F9EA0"
+                color="white"
+                // float="right"
+                // onClick={handleSubmit}
+              >
+                -
+              </Button>
+              <Button
+                id="save-row-button"
+                type="submit"
+                size="sm"
+                bg="#5F9EA0"
+                color="white"
+                // float="right"
+                // onClick={handleSubmit}
+              >
+                Save
+              </Button>
+              <Button
+                id="resume-counting-button"
+                type="button"
+                size="sm"
+                bg="#5F9EA0"
+                color="white"
+                // float="right"
+                // onClick={handleSubmit}
+              >
+                Resume
+              </Button>
+              <Button
+                id="reset-row-count"
+                type="reset"
+                size="sm"
+                bg="#5F9EA0"
+                color="white"
+                // float="right"
+                // onClick={handleSubmit}
+              >
+                Reset Counter
+              </Button>
+            </HStack>
           </GridItem>
-          <GridItem id="save-row-button">
-            <Button
-              id="save-row-button"
-              type="submit"
-              size="sm"
-              bg="#A0605F"
-              color="white"
-              // float="right"
-              // onClick={handleSubmit}
-            >
-              Save
-            </Button>
-          </GridItem>
-          <GridItem id="resume-button">
-            <Button
-              id="resume-counting-button"
-              type="button"
-              size="sm"
-              bg="#A0605F"
-              color="white"
-              // float="right"
-              // onClick={handleSubmit}
-            >
-              Resume
-            </Button>
-          </GridItem>
-          <GridItem id="reset-row-count-button">
-            <Button
-              id="reset-row-count"
-              type="reset"
-              size="sm"
-              bg="#A0605F"
-              color="white"
-              // float="right"
-              // onClick={handleSubmit}
-            >
-              Reset
-            </Button>
-          </GridItem>
+          <GridItem id="decrementor-button-container"></GridItem>
+          <GridItem id="save-row-button"></GridItem>
+          <GridItem id="resume-button"></GridItem>
+          <GridItem id="reset-row-count-button"></GridItem>
         </Grid>
       </FormControl>
     </>

@@ -16,6 +16,7 @@ const MainContainer = () => {
         justifyContent="center"
         alignItems="center"
         borderRadius="15px"
+        padding="5%"
       >
         <RowCounterContainer />
       </Flex>
