@@ -187,7 +187,7 @@ const RowCounterForm = (
           <Button
               id="incrementor-button"
               type="button"
-              size="lg"
+              size="sm"
               bg="#A0605F"
               color="white"
               // float="right"
@@ -200,7 +200,7 @@ const RowCounterForm = (
           <Button
               id="decrementor-button"
               type="button"
-              size="lg"
+              size="sm"
               bg="#A0605F"
               color="white"
               // float="right"
@@ -209,80 +209,45 @@ const RowCounterForm = (
               -
             </Button>
           </GridItem>
-          <GridItem id="save-button">
-            {/* Insert Save button Here */}
-            {/* <Input
-              placeholder="Sent"
-              size="sm"
-              borderRadius="6px"
-              border="2px solid"
-              borderColor="#FE875D"
-              bg="white"
-              focusBorderColor="#356288"
-              errorBorderColor="#FE1100"
-              // value={signalSent}
-              // onChange={(event) => {
-              //   setSignalSent(event.target.value);
-              // }}
-            ></Input> */}
-          </GridItem>
-          <GridItem id="resume-button">
-            {/* Insert Resume button */}
-            {/* <Input
-              placeholder="Received"
-              size="sm"
-              borderRadius="6px"
-              border="2px solid"
-              borderColor="#FE875D"
-              bg="white"
-              focusBorderColor="#356288"
-              errorBorderColor="#FE1100"
-              // value={signalReceived}
-              // onChange={(event) => {
-              //   setSignalReceived(event.target.value);
-              // }}
-            ></Input> */}
-          </GridItem>
-          <GridItem id="reset-button" colSpan={4}>
-            {/* Insert Reset Button */}
-            {/* <Textarea
-              placeholder="Notes"
-              size="sm"
-              borderRadius="6px"
-              border="2px solid"
-              borderColor="#FE875D"
-              bg="white"
-              focusBorderColor="#356288"
-              errorBorderColor="#FE1100"
-              // value={notes}
-              // onChange={(event) => {
-              //   setNotes(event.target.value);
-              // }}
-            ></Textarea> */}
-          </GridItem>
-          {/* <GridItem id="submit-button" colStart={4} colEnd={4}>
+          <GridItem id="save-row-button">
             <Button
-              id="submit-new-qso"
+              id="save-row-button"
               type="submit"
               size="sm"
-              bg="#FE875D"
+              bg="#A0605F"
               color="white"
-              float="right"
+              // float="right"
               // onClick={handleSubmit}
             >
-              Submit
-            </Button> */}
-          {/*<Button
-                id="update-qso-history-table"
-                size="sm"
-                bg="#FE875D"
-                color="white"
-                float="right"
-                onClick={getData}
-              >
-                Update Table
-              </Button>*/}
-          {/* </GridItem> */}
+              Save
+            </Button>
+          </GridItem>
+          <GridItem id="resume-button">
+            <Button
+              id="resume-counting-button"
+              type="button"
+              size="sm"
+              bg="#A0605F"
+              color="white"
+              // float="right"
+              // onClick={handleSubmit}
+            >
+              Resume
+            </Button>
+          </GridItem>
+          <GridItem id="reset-row-count-button">
+            <Button
+              id="reset-row-count"
+              type="reset"
+              size="sm"
+              bg="#A0605F"
+              color="white"
+              // float="right"
+              // onClick={handleSubmit}
+            >
+              Reset
+            </Button>
+          </GridItem>
         </Grid>
       </FormControl>
     </>
