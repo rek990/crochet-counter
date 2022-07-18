@@ -118,6 +118,8 @@ const RowCounterForm = () => {
     // initially, let's console.log() it to get initial functionality
     // setDisplayRowNumber(enterRowNumber);
     // return displayRowNumber;
+    // clear input field
+    setEnterRowNumber("");
   };
 
   return (
