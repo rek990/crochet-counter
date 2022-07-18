@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Grid,
   GridItem,
@@ -13,11 +13,16 @@ import {
   Heading,
   Flex,
   HStack,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper,
 } from "@chakra-ui/react";
 
 const RowCounterForm = () => {
   // let [qsoNumber, setQsoNumber] = useState(6);
-  // const [callSign, setCallSign] = useState("");
+
   // const [qsoDate, setQsoDate] = useState("");
   // const [qsoTime, setQsoTime] = useState("");
   // const [meterBand, setMeterBand] = useState(null);
@@ -102,6 +107,19 @@ const RowCounterForm = () => {
   // }, []);
   // console.log(qsoData);
 
+  const [enterRowNumber, setEnterRowNumber] = useState("");
+  const [displayRowNumber, setDisplayRowNumber] = useState(enterRowNumber);
+  // console.log("displayRowNumber", displayRowNumber); 
+
+  const handleSubmit = () => {
+    // click button
+    // entry taken from input and displayed in Row # heading
+    document.getElementById("row-heading-number").innerText = enterRowNumber;
+    // initially, let's console.log() it to get initial functionality
+    // setDisplayRowNumber(enterRowNumber);
+    // return displayRowNumber;
+  };
+
   return (
     <>
       <FormControl>
@@ -129,10 +147,10 @@ const RowCounterForm = () => {
               bg="white"
               focusBorderColor="#A05F9E"
               errorBorderColor="#FE1100"
-              // value={callSign}
-              // onChange={(event) => {
-              //   setCallSign(event.target.value);
-              // }}
+              value={enterRowNumber}
+              onChange={(event) => {
+                setEnterRowNumber(Number(event.target.value));
+              }}
             ></Input>
           </GridItem>
           <GridItem id="submit-reset-buttons" colSpan={2}>
@@ -144,7 +162,7 @@ const RowCounterForm = () => {
                 bg="#5F9EA0"
                 color="white"
                 // float="right"
-                // onClick={handleSubmit}
+                onClick={handleSubmit}
               >
                 Submit Entry
               </Button>
@@ -184,7 +202,10 @@ const RowCounterForm = () => {
               alignItems="center"
             >
               <Heading size="lg" color="white">
-                Row # 6
+                Row # 
+              </Heading>
+              <Heading size="lg" color="white" id="row-heading-number">
+                
               </Heading>
             </Flex>
           </GridItem>
