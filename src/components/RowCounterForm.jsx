@@ -175,7 +175,7 @@ const RowCounterForm = () => {
                 bg="#5F9EA0"
                 color="white"
                 // float="right"
-                // onClick={handleSubmit}
+                onClick={() => setEnterRowNumber("")}
               >
                 Reset Entry
               </Button>
