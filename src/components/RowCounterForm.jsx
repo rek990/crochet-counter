@@ -109,18 +109,25 @@ const RowCounterForm = () => {
 
   const [enterRowNumber, setEnterRowNumber] = useState("");
   const [displayRowNumber, setDisplayRowNumber] = useState(enterRowNumber);
-  // console.log("displayRowNumber", displayRowNumber); 
+  // const [incrementorButton, setIncrementorButton] = useState(enterRowNumber);
 
   const handleSubmit = () => {
-    // click button
-    // entry taken from input and displayed in Row # heading
-    document.getElementById("row-heading-number").innerText = enterRowNumber;
-    // initially, let's console.log() it to get initial functionality
-    // setDisplayRowNumber(enterRowNumber);
-    // return displayRowNumber;
-    // clear input field
+    setDisplayRowNumber(enterRowNumber); // similar to document.getElementById("row-heading-number").innerText = enterRowNumber;
+    console.log("displayRowNumberSubmit", displayRowNumber);
+    console.log(typeof(displayRowNumber));
+    console.log(typeof(displayRowNumber));
     setEnterRowNumber("");
   };
+
+  const handleIncrementor = () => {
+    setDisplayRowNumber(+displayRowNumber + 1);
+    console.log("displayRowNumberIncrement", displayRowNumber);
+  }
+
+  const handleDecrementor = () => {
+    setDisplayRowNumber(+displayRowNumber - 1);
+    console.log("displayRowNumberIncrement", displayRowNumber);
+  }
 
   return (
     <>
@@ -204,10 +211,7 @@ const RowCounterForm = () => {
               alignItems="center"
             >
               <Heading size="lg" color="white">
-                Row # 
-              </Heading>
-              <Heading size="lg" color="white" id="row-heading-number">
-                
+                Row # {displayRowNumber}
               </Heading>
             </Flex>
           </GridItem>
@@ -234,7 +238,7 @@ const RowCounterForm = () => {
                 bg="#5F9EA0"
                 color="white"
                 // float="right"
-                // onClick={handleSubmit}
+                onClick={handleIncrementor}
               >
                 +
               </Button>
@@ -245,7 +249,7 @@ const RowCounterForm = () => {
                 bg="#5F9EA0"
                 color="white"
                 // float="right"
-                // onClick={handleSubmit}
+                onClick={handleDecrementor}
               >
                 -
               </Button>
