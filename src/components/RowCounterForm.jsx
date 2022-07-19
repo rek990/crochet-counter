@@ -109,24 +109,38 @@ const RowCounterForm = () => {
 
   const [enterRowNumber, setEnterRowNumber] = useState("");
   const [displayRowNumber, setDisplayRowNumber] = useState(enterRowNumber);
-  // const [incrementorButton, setIncrementorButton] = useState(enterRowNumber);
 
   const handleSubmit = () => {
     setDisplayRowNumber(enterRowNumber); // similar to document.getElementById("row-heading-number").innerText = enterRowNumber;
     console.log("displayRowNumberSubmit", displayRowNumber);
-    console.log(typeof(displayRowNumber));
-    console.log(typeof(displayRowNumber));
+    console.log(typeof displayRowNumber);
+    console.log(typeof displayRowNumber);
     setEnterRowNumber("");
   };
 
   const handleIncrementor = () => {
     setDisplayRowNumber(+displayRowNumber + 1);
     console.log("displayRowNumberIncrement", displayRowNumber);
-  }
+  };
 
   const handleDecrementor = () => {
-    setDisplayRowNumber(+displayRowNumber - 1);
+    if (displayRowNumber > 0) {
+      setDisplayRowNumber(+displayRowNumber - 1);
+    } else {
+      setDisplayRowNumber(0);
+    }
     console.log("displayRowNumberIncrement", displayRowNumber);
+  };
+
+  const saveRowCount = () => {
+    // click Save button
+    // this will eventually become a POST request (start with JSON server and take it from there)
+    // for now, log the saved row count to the console
+  };
+
+  const resumeRowCount = () => {
+    // click Resume button
+    // this will eventually become a GET request (start with JSON server and take it from there)
   }
 
   return (
@@ -282,7 +296,7 @@ const RowCounterForm = () => {
                 bg="#5F9EA0"
                 color="white"
                 // float="right"
-                // onClick={handleSubmit}
+                onClick={() => setDisplayRowNumber(0)}
               >
                 Reset Counter
               </Button>
