@@ -109,6 +109,7 @@ const RowCounterForm = () => {
 
   const [enterRowNumber, setEnterRowNumber] = useState("");
   const [displayRowNumber, setDisplayRowNumber] = useState(enterRowNumber);
+  const [savedRowNumber, setSavedRowNumber] = useState("");
 
   const handleSubmit = () => {
     setDisplayRowNumber(enterRowNumber); // similar to document.getElementById("row-heading-number").innerText = enterRowNumber;
@@ -136,16 +137,25 @@ const RowCounterForm = () => {
     // click Save button
     // this will eventually become a POST request (start with JSON server and take it from there)
     // for now, log the saved row count to the console
+    // setSavedRowNumber(displayRowNumber);
+    console.log("displayRowNumberSaved", displayRowNumber);
+    // reset the row counter to zero
+    setDisplayRowNumber("");
   };
 
   const resumeRowCount = () => {
     // click Resume button
     // this will eventually become a GET request (start with JSON server and take it from there)
-  }
+    // display the saved count into the UI
+    // setSavedRowNumber(displayRowNumber);
+    // console.log("savedRowNumber", savedRowNumber);
+    document.getElementById("resume-row-count").innerText = displayRowNumber;
+  };
 
   return (
     <>
       <FormControl>
+        {/* Note to adjust the templateRows and/or Columns to accommodate for double- and triple-digit row numbers. */}
         <Grid
           className="stitch-counter-container-grid"
           templateRows="repeat(2, 1fr)"
@@ -224,9 +234,15 @@ const RowCounterForm = () => {
               justifyContent="center"
               alignItems="center"
             >
-              <Heading size="lg" color="white">
+              <Heading size="lg" color="white" textAlign="center">
                 Row # {displayRowNumber}
               </Heading>
+              <Heading
+                size="lg"
+                color="white"
+                textAlign="center"
+                id="resume-row-count"
+              ></Heading>
             </Flex>
           </GridItem>
           {/* <GridItem id="row-number-output">
@@ -274,7 +290,7 @@ const RowCounterForm = () => {
                 bg="#5F9EA0"
                 color="white"
                 // float="right"
-                // onClick={handleSubmit}
+                onClick={saveRowCount}
               >
                 Save
               </Button>
@@ -285,7 +301,7 @@ const RowCounterForm = () => {
                 bg="#5F9EA0"
                 color="white"
                 // float="right"
-                // onClick={handleSubmit}
+                onClick={resumeRowCount}
               >
                 Resume
               </Button>
@@ -296,7 +312,7 @@ const RowCounterForm = () => {
                 bg="#5F9EA0"
                 color="white"
                 // float="right"
-                onClick={() => setDisplayRowNumber(0)}
+                onClick={() => setDisplayRowNumber("")}
               >
                 Reset Counter
               </Button>
