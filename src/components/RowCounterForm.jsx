@@ -81,7 +81,9 @@ const RowCounterForm = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data[0].savedRowCount);
+        console.log(data[0].projectName);
         setDisplayRowNumber(data[0].savedRowCount);
+        setDisplayProjectName(data[0].projectName);
       });
   };
 
