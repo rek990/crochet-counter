@@ -56,13 +56,15 @@ const RowCounterForm = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ savedRowCount: displayRowNumber }), // this is how you format what goes in the POST request
+      body: JSON.stringify({ savedRowCount: displayRowNumber, projectName: displayProjectName }), // this is how you format what goes in the POST request
     })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setDisplayRowNumber(data.savedRowCount);
+        setDisplayProjectName(data.projectName);
         setDisplayRowNumber("");
+        setDisplayProjectName("");
       });
   };
 
