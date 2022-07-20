@@ -8,6 +8,7 @@ import {
   Heading,
   Flex,
   HStack,
+  Text,
 } from "@chakra-ui/react";
 
 const RowCounterForm = () => {
@@ -15,11 +16,19 @@ const RowCounterForm = () => {
   const [displayRowNumber, setDisplayRowNumber] = useState(enterRowNumber);
   // const [savedRowNumber, setSavedRowNumber] = useState("");
   const [enterProjectName, setEnterProjectName] = useState("");
+  const [displayProjectName, setDisplayProjectName] = useState(enterProjectName);
 
   const handleSubmit = () => {
     setDisplayRowNumber(enterRowNumber); // similar to document.getElementById("row-heading-number").innerText = enterRowNumber;
+    setDisplayProjectName(enterProjectName);
     setEnterRowNumber("");
+    setEnterProjectName("");
   };
+
+  const handleReset = () => {
+    setEnterRowNumber("");
+    setEnterProjectName("");
+  }
 
   const handleIncrementor = () => {
     setDisplayRowNumber(+displayRowNumber + 1);
@@ -85,7 +94,7 @@ const RowCounterForm = () => {
           borderRadius="15px"
           padding="3%"
         >
-         <GridItem id="project-name-form" colSpan={2}>
+          <GridItem id="project-name-form" colSpan={2}>
             <Input
               id="project-name-input"
               placeholder="Enter Project Name"
@@ -96,7 +105,7 @@ const RowCounterForm = () => {
               bg="white"
               focusBorderColor="#A05F9E"
               errorBorderColor="#FE1100"
-              value={enterRowNumber}
+              value={enterProjectName}
               onChange={(event) => {
                 setEnterProjectName(event.target.value);
               }}
@@ -118,8 +127,8 @@ const RowCounterForm = () => {
                 setEnterRowNumber(Number(event.target.value));
               }}
             ></Input>
-            </GridItem>
-           
+          </GridItem>
+
           <GridItem id="submit-reset-buttons" colSpan={2}>
             <HStack>
               <Button
@@ -138,11 +147,28 @@ const RowCounterForm = () => {
                 size="sm"
                 bg="#5F9EA0"
                 color="white"
-                onClick={() => setEnterRowNumber("")}
+                onClick={handleReset}
               >
                 Reset Entry
               </Button>
             </HStack>
+          </GridItem>
+          <GridItem id="project-name-label" colSpan={2} colStart={4}>
+            <Flex
+              height="5vh"
+              bg="#5F9EA0"
+              borderRadius="15px"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Text
+                              color="white"
+                textAlign="center"
+                className="display-project-name"
+              >
+                <b>Project: {displayProjectName}</b>
+              </Text>
+            </Flex>
           </GridItem>
           <GridItem id="row-number-label" colSpan={2} colStart={4}>
             <Flex
