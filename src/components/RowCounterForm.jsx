@@ -13,7 +13,8 @@ import {
 const RowCounterForm = () => {
   const [enterRowNumber, setEnterRowNumber] = useState("");
   const [displayRowNumber, setDisplayRowNumber] = useState(enterRowNumber);
-  const [savedRowNumber, setSavedRowNumber] = useState("");
+  // const [savedRowNumber, setSavedRowNumber] = useState("");
+  const [enterProjectName, setEnterProjectName] = useState("");
 
   const handleSubmit = () => {
     setDisplayRowNumber(enterRowNumber); // similar to document.getElementById("row-heading-number").innerText = enterRowNumber;
@@ -84,7 +85,24 @@ const RowCounterForm = () => {
           borderRadius="15px"
           padding="3%"
         >
-          <GridItem id="row-counter-form" colSpan={2} colStart={4}>
+         <GridItem id="project-name-form" colSpan={2}>
+            <Input
+              id="project-name-input"
+              placeholder="Enter Project Name"
+              size="sm"
+              borderRadius="6px"
+              border="3px solid"
+              borderColor="#5F9EA0"
+              bg="white"
+              focusBorderColor="#A05F9E"
+              errorBorderColor="#FE1100"
+              value={enterRowNumber}
+              onChange={(event) => {
+                setEnterProjectName(event.target.value);
+              }}
+            ></Input>
+          </GridItem>
+          <GridItem id="row-counter-form" colSpan={2}>
             <Input
               id="row-number-input"
               placeholder="Enter Row Number"
@@ -100,7 +118,8 @@ const RowCounterForm = () => {
                 setEnterRowNumber(Number(event.target.value));
               }}
             ></Input>
-          </GridItem>
+            </GridItem>
+           
           <GridItem id="submit-reset-buttons" colSpan={2}>
             <HStack>
               <Button
