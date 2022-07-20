@@ -33,20 +33,15 @@ const RowCounterForm = () => {
   };
 
   const saveRowCount = () => {
-    // this will eventually become a POST request (start with JSON server and take it from there)
     // this will also be a PUT request
 
-    /* const savedRowData = {
-      savedRowCount: displayRowNumber,
-    }
- */
     const res = fetch("http://localhost:3000/rowCount", {
       method: "POST",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({savedRowCount: displayRowNumber}), // this is how you format what goes in the POST request
+      body: JSON.stringify({ savedRowCount: displayRowNumber }), // this is how you format what goes in the POST request
     })
       .then((res) => res.json())
       .then((data) => {
@@ -57,7 +52,7 @@ const RowCounterForm = () => {
   };
 
   // POST request needs more work before implementing useEffect()
- /*  useEffect(() => {
+  /*  useEffect(() => {
     saveRowCount();
   }, []); */
 
@@ -65,7 +60,12 @@ const RowCounterForm = () => {
     // click Resume button
     // this will eventually become a GET request (start with JSON server and take it from there)
     // display the saved count into the UI
-    document.getElementById("resume-row-count").innerText = displayRowNumber;
+    const res = fetch("http://localhost:3000/rowCount")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data[0].savedRowCount);
+        setDisplayRowNumber(data[0].savedRowCount);
+      });
   };
 
   return (
@@ -133,15 +133,14 @@ const RowCounterForm = () => {
               justifyContent="center"
               alignItems="center"
             >
-              <Heading size="lg" color="white" textAlign="center">
-                Row # {displayRowNumber}
-              </Heading>
               <Heading
                 size="lg"
                 color="white"
                 textAlign="center"
-                id="resume-row-count"
-              ></Heading>
+                className="display-row-count"
+              >
+                Row # {displayRowNumber}
+              </Heading>
             </Flex>
           </GridItem>
           <GridItem id="stitch-counter-buttons">
