@@ -25,9 +25,14 @@ const RowCounterForm = () => {
     setEnterProjectName("");
   };
 
-  const handleReset = () => {
+  const handleResetEntry = () => {
     setEnterRowNumber("");
     setEnterProjectName("");
+  }
+
+  const handleResetAll = () => {
+    setDisplayRowNumber("");
+    setDisplayProjectName("");
   }
 
   const handleIncrementor = () => {
@@ -94,7 +99,7 @@ const RowCounterForm = () => {
           borderRadius="15px"
           padding="3%"
         >
-          <GridItem id="project-name-form" colSpan={2}>
+          <GridItem id="project-name-form" colSpan={2} colStart={3}>
             <Input
               id="project-name-input"
               placeholder="Enter Project Name"
@@ -147,13 +152,13 @@ const RowCounterForm = () => {
                 size="sm"
                 bg="#5F9EA0"
                 color="white"
-                onClick={handleReset}
+                onClick={handleResetEntry}
               >
                 Reset Entry
               </Button>
             </HStack>
           </GridItem>
-          <GridItem id="project-name-label" colSpan={2} colStart={4}>
+          <GridItem id="project-name-label" colSpan={2} colStart={3}>
             <Flex
               height="5vh"
               bg="#5F9EA0"
@@ -170,7 +175,7 @@ const RowCounterForm = () => {
               </Text>
             </Flex>
           </GridItem>
-          <GridItem id="row-number-label" colSpan={2} colStart={4}>
+          <GridItem id="row-number-label" colSpan={2}>
             <Flex
               height="5vh"
               bg="#5F9EA0"
@@ -236,9 +241,9 @@ const RowCounterForm = () => {
                 size="sm"
                 bg="#5F9EA0"
                 color="white"
-                onClick={() => setDisplayRowNumber("")}
+                onClick={handleResetAll}
               >
-                Reset Counter
+                Reset All
               </Button>
             </HStack>
           </GridItem>
