@@ -35,6 +35,11 @@ const RowCounterForm = () => {
   const saveRowCount = () => {
     // this will eventually become a POST request (start with JSON server and take it from there)
     // this will also be a PUT request
+
+    /* const savedRowData = {
+      savedRowCount: displayRowNumber,
+    }
+ */
     const res = fetch("http://localhost:3000/rowCount", {
       method: "POST",
       credentials: "include",
@@ -47,15 +52,14 @@ const RowCounterForm = () => {
       .then((data) => {
         console.log(data);
         setDisplayRowNumber(data.savedRowCount);
+        setDisplayRowNumber("");
       });
-    console.log("displayRowNumberSaved", displayRowNumber);
-    setDisplayRowNumber("");
   };
 
   // POST request needs more work before implementing useEffect()
-  // useEffect(() => {
-  //   saveRowCount();
-  // }, []);
+ /*  useEffect(() => {
+    saveRowCount();
+  }, []); */
 
   const resumeRowCount = () => {
     // click Resume button
