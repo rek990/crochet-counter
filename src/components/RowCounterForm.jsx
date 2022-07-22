@@ -202,13 +202,13 @@ const RowCounterForm = () => {
               justifyContent="center"
               alignItems="center"
             >
-              {/* <Text
-                              color="white"
+              <Text
+                color="white"
                 textAlign="center"
                 className="display-project-name"
               >
-                <b>Project: {displayProjectName}</b>
-              </Text> */}
+                <b>Project:</b>&nbsp;
+              </Text>
               {retrievedProjects.map((data, index) => {
                 return (
                   <>
@@ -218,7 +218,11 @@ const RowCounterForm = () => {
                       className="display-project-name"
                       key={index}
                     >
-                      {data.projectName === retrievedProjectName ? <b>Project: {data.projectName}</b>: null}
+                      <b>
+                        {data.projectName === retrievedProjectName
+                          ? data.projectName
+                          : null}
+                      </b>
                     </Text>
                   </>
                 );
@@ -233,14 +237,38 @@ const RowCounterForm = () => {
               justifyContent="center"
               alignItems="center"
             >
-              <Heading
+              {/* <Heading
                 size="lg"
                 color="white"
                 textAlign="center"
                 className="display-row-count"
               >
                 Row # {displayRowNumber}
+              </Heading> */}
+              <Heading
+                size="lg"
+                color="white"
+                textAlign="center"
+                className="display-row-count"
+              >
+                Row #&nbsp;
               </Heading>
+              {retrievedProjects.map((data, index) => {
+                return (
+                  <>
+                    <Heading
+                      size="lg"
+                      color="white"
+                      textAlign="center"
+                      className="display-row-count"
+                    >
+                      {data.projectName === retrievedProjectName
+                        ? data.savedRowCount
+                        : null}
+                    </Heading>
+                  </>
+                );
+              })}
             </Flex>
           </GridItem>
           <GridItem id="stitch-counter-buttons">
