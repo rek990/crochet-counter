@@ -16,7 +16,10 @@ const RowCounterForm = () => {
   const [displayRowNumber, setDisplayRowNumber] = useState(enterRowNumber);
   // const [savedRowNumber, setSavedRowNumber] = useState("");
   const [enterProjectName, setEnterProjectName] = useState("");
-  const [displayProjectName, setDisplayProjectName] = useState(enterProjectName);
+  const [displayProjectName, setDisplayProjectName] =
+    useState(enterProjectName);
+  const [retrievedProjectName, setRetrievedProjectName] = useState("");
+  const [retrievedProjects, setRetreivedProjects] = useState([]);
 
   const handleSubmit = () => {
     setDisplayRowNumber(enterRowNumber); // similar to document.getElementById("row-heading-number").innerText = enterRowNumber;
@@ -28,12 +31,14 @@ const RowCounterForm = () => {
   const handleResetEntry = () => {
     setEnterRowNumber("");
     setEnterProjectName("");
-  }
+  };
 
   const handleResetAll = () => {
     setDisplayRowNumber("");
     setDisplayProjectName("");
-  }
+    setRetrievedProjectName("");
+    setRetreivedProjects([]);
+  };
 
   const handleIncrementor = () => {
     setDisplayRowNumber(+displayRowNumber + 1);
@@ -56,7 +61,10 @@ const RowCounterForm = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ savedRowCount: displayRowNumber, projectName: displayProjectName }), // this is how you format what goes in the POST request
+      body: JSON.stringify({
+        savedRowCount: displayRowNumber,
+        projectName: displayProjectName,
+      }), // this is how you format what goes in the POST request
     })
       .then((res) => res.json())
       .then((data) => {
@@ -80,12 +88,19 @@ const RowCounterForm = () => {
     const res = fetch("http://localhost:3000/rowCount")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data[0].savedRowCount);
-        console.log(data[0].projectName);
-        setDisplayRowNumber(data[0].savedRowCount);
-        setDisplayProjectName(data[0].projectName);
+        setRetreivedProjects(data);
+        // console.log(data[0].savedRowCount);
+        // console.log(data[0].projectName);
+        // setDisplayRowNumber(data[0].savedRowCount);
+        // setDisplayProjectName(data[0].projectName);
+        setRetrievedProjectName(retrievedProjectName);
+        console.log("retrievedProjectName", retrievedProjectName);
+        // setRetrievedProjectName("");
+        console.log("retrievedProjectName", retrievedProjectName);
       });
   };
+
+  // console.log("retrievedProjects", retrievedProjects);
 
   return (
     <>
@@ -162,7 +177,24 @@ const RowCounterForm = () => {
               </Button>
             </HStack>
           </GridItem>
-          <GridItem id="project-name-label" colSpan={2} colStart={3}>
+          <GridItem id="retrieve-project-form" colSpan={2}>
+            <Input
+              id="retrieve-project-input"
+              placeholder="Retrieved Project"
+              size="sm"
+              borderRadius="6px"
+              border="3px solid"
+              borderColor="#5F9EA0"
+              bg="white"
+              focusBorderColor="#A05F9E"
+              errorBorderColor="#FE1100"
+              value={retrievedProjectName}
+              onChange={(event) => {
+                setRetrievedProjectName(event.target.value);
+              }}
+            ></Input>
+          </GridItem>
+          <GridItem id="project-name-label" colSpan={3}>
             <Flex
               height="5vh"
               bg="#5F9EA0"
@@ -170,13 +202,27 @@ const RowCounterForm = () => {
               justifyContent="center"
               alignItems="center"
             >
-              <Text
+              {/* <Text
                               color="white"
                 textAlign="center"
                 className="display-project-name"
               >
                 <b>Project: {displayProjectName}</b>
-              </Text>
+              </Text> */}
+              {retrievedProjects.map((data, index) => {
+                return (
+                  <>
+                    <Text
+                      color="white"
+                      textAlign="center"
+                      className="display-project-name"
+                      key={index}
+                    >
+                      {data.projectName === retrievedProjectName ? <b>Project: {data.projectName}</b>: null}
+                    </Text>
+                  </>
+                );
+              })}
             </Flex>
           </GridItem>
           <GridItem id="row-number-label" colSpan={2}>
