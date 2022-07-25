@@ -14,11 +14,11 @@ import {
 const RowCounterForm = () => {
   const [enterRowNumber, setEnterRowNumber] = useState("");
   const [displayRowNumber, setDisplayRowNumber] = useState(enterRowNumber);
-  // const [savedRowNumber, setSavedRowNumber] = useState("");
+  const [savedRowNumber, setSavedRowNumber] = useState(displayRowNumber);
   const [enterProjectName, setEnterProjectName] = useState("");
   const [displayProjectName, setDisplayProjectName] =
     useState(enterProjectName);
-  const [retrievedProjectName, setRetrievedProjectName] = useState("");
+  const [retrievedProjectName, setRetrievedProjectName] = useState(displayProjectName);
   const [retrievedProjects, setRetreivedProjects] = useState([]);
 
   const handleSubmit = () => {
@@ -77,9 +77,9 @@ const RowCounterForm = () => {
   };
 
   // POST request needs more work before implementing useEffect()
-  /*  useEffect(() => {
-    saveRowCount();
-  }, []); */
+  //  useEffect(() => {
+  //   saveRowCount();
+  // }, []);
 
   const resumeRowCount = () => {
     // click Resume button
@@ -88,12 +88,19 @@ const RowCounterForm = () => {
     const res = fetch("http://localhost:3000/rowCount")
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setRetreivedProjects(data);
+        setSavedRowNumber(savedRowNumber);
         setRetrievedProjectName(retrievedProjectName);
         console.log("retrievedProjectName", retrievedProjectName);
-        console.log("retrievedProjectName", retrievedProjectName);
+        console.log("retrievedProjects", retrievedProjects);
+        console.log("savedRowNumber", savedRowNumber);
       });
   };
+
+  // useEffect(() => {
+  //   resumeRowCount();
+  // }, []);
 
   return (
     <>
