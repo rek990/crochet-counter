@@ -26,14 +26,19 @@
       "savedRowCount": 132
     },
     {
-      "savedRowCount": 1,
-      "projectName": "Blanket",
+      "savedRowCount": 3,
+      "projectName": "Afghan Square 1",
       "id": 6
     },
     {
-      "savedRowCount": 5,
-      "projectName": "Dishcloth",
+      "savedRowCount": 3,
+      "projectName": "Block 2",
       "id": 7
+    },
+    {
+      "savedRowCount": 6,
+      "projectName": "Block 3",
+      "id": 8
     }
   ]
 }

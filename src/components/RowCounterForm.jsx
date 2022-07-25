@@ -82,25 +82,18 @@ const RowCounterForm = () => {
   }, []); */
 
   const resumeRowCount = () => {
-    // click Resume button
-    // this will eventually become a GET request (start with JSON server and take it from there)
-    // display the saved count into the UI
-    const res = fetch("http://localhost:3000/rowCount")
-      .then((res) => res.json())
-      .then((data) => {
-        setRetreivedProjects(data);
-        // console.log(data[0].savedRowCount);
-        // console.log(data[0].projectName);
-        // setDisplayRowNumber(data[0].savedRowCount);
-        // setDisplayProjectName(data[0].projectName);
-        setRetrievedProjectName(retrievedProjectName);
-        console.log("retrievedProjectName", retrievedProjectName);
-        // setRetrievedProjectName("");
-        console.log("retrievedProjectName", retrievedProjectName);
-      });
+  // click Resume button
+  // this will eventually become a GET request (start with JSON server and take it from there)
+  // display the saved count into the UI
+  const res = fetch("http://localhost:3000/rowCount")
+  .then((res) => res.json())
+  .then((data) => {
+  setRetreivedProjects(data);
+  setRetrievedProjectName(retrievedProjectName);
+  console.log("retrievedProjectName", retrievedProjectName);
+  console.log("retrievedProjectName", retrievedProjectName);
+  });
   };
-
-  // console.log("retrievedProjects", retrievedProjects);
 
   return (
     <>
@@ -200,9 +193,34 @@ const RowCounterForm = () => {
               bg="#5F9EA0"
               borderRadius="15px"
               justifyContent="center"
-              alignItems="center"
-            >
-              <Text
+              alignItems="center">
+           <Text
+                color="white"
+                textAlign="center"
+                className="display-project-name"
+              >
+                <b>Project:</b>&nbsp;{displayProjectName}
+              </Text> 
+              {retrievedProjects.map((data, index) => {
+                return (
+                  <>
+                    <Text
+                      color="white"
+                      textAlign="center"
+                      className="display-project-name"
+                      key={index}
+                    >
+                      <b>
+                        {
+                        data.projectName === retrievedProjectName
+                          ? data.projectName
+                          : null}
+                      </b>
+                    </Text>
+                  </>
+                );
+              })} 
+              {/* <Text
                 color="white"
                 textAlign="center"
                 className="display-project-name"
@@ -219,14 +237,15 @@ const RowCounterForm = () => {
                       key={index}
                     >
                       <b>
-                        {data.projectName === retrievedProjectName
+                        {retrievedProjectName &&
+                        data.projectName === retrievedProjectName
                           ? data.projectName
-                          : null}
+                          : !retrievedProjectName ? { displayProjectName } : null}
                       </b>
                     </Text>
                   </>
                 );
-              })}
+              })} */}
             </Flex>
           </GridItem>
           <GridItem id="row-number-label" colSpan={2}>
@@ -237,15 +256,15 @@ const RowCounterForm = () => {
               justifyContent="center"
               alignItems="center"
             >
-              {/* <Heading
+              <Heading
                 size="lg"
                 color="white"
                 textAlign="center"
                 className="display-row-count"
               >
                 Row # {displayRowNumber}
-              </Heading> */}
-              <Heading
+              </Heading>
+              {/* <Heading
                 size="lg"
                 color="white"
                 textAlign="center"
@@ -268,7 +287,7 @@ const RowCounterForm = () => {
                     </Heading>
                   </>
                 );
-              })}
+              })} */}
             </Flex>
           </GridItem>
           <GridItem id="stitch-counter-buttons">
