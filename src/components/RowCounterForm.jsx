@@ -194,7 +194,20 @@ const RowCounterForm = () => {
               }}
             ></Input>
           </GridItem>
-          <GridItem id="project-name-label" colSpan={3}>
+          {/* Move Resume Button Here */}
+          <GridItem>
+          <Button
+                id="resume-counting-button"
+                type="button"
+                size="sm"
+                bg="#5F9EA0"
+                color="white"
+                onClick={resumeRowCount}
+              >
+                Resume
+              </Button>
+          </GridItem>
+          <GridItem id="project-name-label" colSpan={2}>
             <Flex
               height="5vh"
               bg="#5F9EA0"
@@ -303,16 +316,8 @@ const RowCounterForm = () => {
               >
                 Save
               </Button>
-              <Button
-                id="resume-counting-button"
-                type="button"
-                size="sm"
-                bg="#5F9EA0"
-                color="white"
-                onClick={resumeRowCount}
-              >
-                Resume
-              </Button>
+              {/* Resume formerly here */}
+             
               <Button
                 id="reset-row-count"
                 type="reset"
