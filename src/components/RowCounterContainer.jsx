@@ -15,7 +15,7 @@ const RowCounterContainer = () => {
           alignItems="center"
         >
           <Heading size="lg" color="white">
-            Stitch Counter
+            Row Counter
           </Heading>
         </Flex>
         <br/>

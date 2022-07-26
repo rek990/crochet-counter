@@ -18,7 +18,8 @@ const RowCounterForm = () => {
   const [enterProjectName, setEnterProjectName] = useState("");
   const [displayProjectName, setDisplayProjectName] =
     useState(enterProjectName);
-  const [retrievedProjectName, setRetrievedProjectName] = useState(displayProjectName);
+  const [retrievedProjectName, setRetrievedProjectName] =
+    useState(displayProjectName);
   const [retrievedProjects, setRetreivedProjects] = useState([]);
 
   const handleSubmit = () => {
@@ -41,9 +42,9 @@ const RowCounterForm = () => {
   };
 
   const handleIncrementor = () => {
-    setDisplayRowNumber(+displayRowNumber + 1);
+      setDisplayRowNumber(+displayRowNumber + 1);
   };
-
+  console.log(savedRowNumber);
   const handleDecrementor = () => {
     if (displayRowNumber > 0) {
       setDisplayRowNumber(+displayRowNumber - 1);
@@ -196,16 +197,16 @@ const RowCounterForm = () => {
           </GridItem>
           {/* Move Resume Button Here */}
           <GridItem>
-          <Button
-                id="resume-counting-button"
-                type="button"
-                size="sm"
-                bg="#5F9EA0"
-                color="white"
-                onClick={resumeRowCount}
-              >
-                Resume
-              </Button>
+            <Button
+              id="resume-counting-button"
+              type="button"
+              size="sm"
+              bg="#5F9EA0"
+              color="white"
+              onClick={resumeRowCount}
+            >
+              Resume
+            </Button>
           </GridItem>
           <GridItem id="project-name-label" colSpan={2}>
             <Flex
@@ -317,7 +318,7 @@ const RowCounterForm = () => {
                 Save
               </Button>
               {/* Resume formerly here */}
-             
+
               <Button
                 id="reset-row-count"
                 type="reset"
