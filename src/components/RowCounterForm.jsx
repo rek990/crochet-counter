@@ -42,9 +42,11 @@ const RowCounterForm = () => {
   };
 
   const handleIncrementor = () => {
-      setDisplayRowNumber(+displayRowNumber + 1);
+    setDisplayRowNumber(+displayRowNumber + 1);
   };
+
   console.log(savedRowNumber);
+
   const handleDecrementor = () => {
     if (displayRowNumber > 0) {
       setDisplayRowNumber(+displayRowNumber - 1);
@@ -53,10 +55,35 @@ const RowCounterForm = () => {
     }
   };
 
-  const saveRowCount = () => {
+  const saveRowCount = async (event) => {
+    event.preventDefault();
     // this will also be a PUT request
 
-    const res = fetch("http://localhost:3000/rowCount", {
+    // no async/await
+
+    // const res = fetch("http://localhost:3000/rowCount", {
+    //   method: "POST",
+    //   credentials: "include",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({
+    //     savedRowCount: displayRowNumber,
+    //     projectName: displayProjectName,
+    //   }), // this is how you format what goes in the POST request
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     setDisplayRowNumber(data.savedRowCount);
+    //     setDisplayProjectName(data.projectName);
+    //     setDisplayRowNumber("");
+    //     setDisplayProjectName("");
+    //   });
+
+    // with async/await
+
+    const res = await fetch("http://localhost:3000/rowCount", {
       method: "POST",
       credentials: "include",
       headers: {
@@ -66,21 +93,20 @@ const RowCounterForm = () => {
         savedRowCount: displayRowNumber,
         projectName: displayProjectName,
       }), // this is how you format what goes in the POST request
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setDisplayRowNumber(data.savedRowCount);
-        setDisplayProjectName(data.projectName);
-        setDisplayRowNumber("");
-        setDisplayProjectName("");
-      });
+    });
+
+    const data = await res.json();
+    console.log(data);
+    setDisplayRowNumber(data.savedRowCount);
+    setDisplayProjectName(data.projectName);
+    setDisplayRowNumber("");
+    setDisplayProjectName("");
   };
 
   // POST request needs more work before implementing useEffect()
-  //  useEffect(() => {
-  //   saveRowCount();
-  // }, []);
+   useEffect(() => {
+    saveRowCount();
+  });
 
   const resumeRowCount = () => {
     // click Resume button
