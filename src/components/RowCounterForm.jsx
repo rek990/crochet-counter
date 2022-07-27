@@ -59,30 +59,6 @@ const RowCounterForm = () => {
     event.preventDefault();
     // this will also be a PUT request
 
-    // no async/await
-
-    // const res = fetch("http://localhost:3000/rowCount", {
-    //   method: "POST",
-    //   credentials: "include",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     savedRowCount: displayRowNumber,
-    //     projectName: displayProjectName,
-    //   }), // this is how you format what goes in the POST request
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     setDisplayRowNumber(data.savedRowCount);
-    //     setDisplayProjectName(data.projectName);
-    //     setDisplayRowNumber("");
-    //     setDisplayProjectName("");
-    //   });
-
-    // with async/await
-
     const res = await fetch("http://localhost:3000/rowCount", {
       method: "POST",
       credentials: "include",
@@ -103,31 +79,26 @@ const RowCounterForm = () => {
     setDisplayProjectName("");
   };
 
-  // POST request needs more work before implementing useEffect()
-   useEffect(() => {
+  useEffect(() => {
     saveRowCount();
-  });
+  }, []);
 
-  const resumeRowCount = () => {
-    // click Resume button
-    // this will eventually become a GET request (start with JSON server and take it from there)
-    // display the saved count into the UI
-    const res = fetch("http://localhost:3000/rowCount")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setRetreivedProjects(data);
-        setSavedRowNumber(savedRowNumber);
-        setRetrievedProjectName(retrievedProjectName);
-        console.log("retrievedProjectName", retrievedProjectName);
-        console.log("retrievedProjects", retrievedProjects);
-        console.log("savedRowNumber", savedRowNumber);
-      });
+  const resumeRowCount = async (event) => {
+    event.preventDefault();
+    const res = await fetch("http://localhost:3000/rowCount");
+    const data = await res.json();
+    console.log(data);
+    setRetreivedProjects(data);
+    setSavedRowNumber(savedRowNumber);
+    setRetrievedProjectName(retrievedProjectName);
+    console.log("retrievedProjectName", retrievedProjectName);
+    console.log("retrievedProjects", retrievedProjects);
+    console.log("savedRowNumber", savedRowNumber);
   };
 
-  // useEffect(() => {
-  //   resumeRowCount();
-  // }, []);
+  useEffect(() => {
+    resumeRowCount();
+  }, []);
 
   return (
     <>
