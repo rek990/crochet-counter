@@ -14,7 +14,8 @@ import {
 const RowCounterForm = () => {
   const [enterRowNumber, setEnterRowNumber] = useState("");
   const [displayRowNumber, setDisplayRowNumber] = useState(enterRowNumber);
-  const [savedRowNumber, setSavedRowNumber] = useState(displayRowNumber);
+  const [savedRowNumber, setSavedRowNumber] = useState(0);
+  console.log(savedRowNumber);
   const [enterProjectName, setEnterProjectName] = useState("");
   const [displayProjectName, setDisplayProjectName] =
     useState(enterProjectName);
@@ -42,10 +43,15 @@ const RowCounterForm = () => {
   };
 
   const handleIncrementor = () => {
+    // console.log("displayRowNumber", displayRowNumber);
+    // console.log("savedRowNumber", savedRowNumber);
+    // if (!savedRowNumber) {
+    //   setDisplayRowNumber(+displayRowNumber + 1);
+    // } else {
+    //   setDisplayRowNumber(+savedRowNumber + 1);
+    // }
     setDisplayRowNumber(+displayRowNumber + 1);
   };
-
-  console.log(savedRowNumber);
 
   const handleDecrementor = () => {
     if (displayRowNumber > 0) {
@@ -89,11 +95,12 @@ const RowCounterForm = () => {
     const data = await res.json();
     console.log(data);
     setRetreivedProjects(data);
-    setSavedRowNumber(savedRowNumber);
+    setSavedRowNumber(data.savedRowCount);
     setRetrievedProjectName(retrievedProjectName);
     console.log("retrievedProjectName", retrievedProjectName);
     console.log("retrievedProjects", retrievedProjects);
     console.log("savedRowNumber", savedRowNumber);
+    console.log(data.savedRowCount);
   };
 
   useEffect(() => {
