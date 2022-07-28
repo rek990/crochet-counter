@@ -13,17 +13,12 @@
     {
       "id": 3,
       "projectName": "Dishcloth",
-      "savedRowCount": ""
+      "savedRowCount": 1
     },
     {
       "id": 4,
       "projectName": "Socks",
       "savedRowCount": 53
-    },
-    {
-      "id": 5,
-      "projectName": "Cardigan",
-      "savedRowCount": 132
     }
   ]
 }

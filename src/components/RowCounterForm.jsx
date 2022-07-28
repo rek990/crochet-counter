@@ -225,7 +225,7 @@ const RowCounterForm = () => {
                 textAlign="center"
                 className="display-project-name"
               >
-                <b>Project:</b>&nbsp;{displayProjectName}
+                <b>Project:&nbsp;{displayProjectName}</b>
               </Text>
               {retrievedProjects.map((data, index) => {
                 return (
