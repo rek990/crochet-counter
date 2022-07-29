@@ -21,7 +21,7 @@ const RowCounterForm = () => {
     useState(enterProjectName);
   const [retrievedProjectName, setRetrievedProjectName] =
     useState(displayProjectName);
-  const [retrievedProjects, setRetreivedProjects] = useState([]);
+  let [retrievedProjects, setRetreivedProjects] = useState([]);
 
   const handleSubmit = () => {
     setDisplayRowNumber(enterRowNumber); // similar to document.getElementById("row-heading-number").innerText = enterRowNumber;
@@ -52,11 +52,6 @@ const RowCounterForm = () => {
   };
 
   const handleDecrementor = () => {
-    // if (displayRowNumber > 0) {
-    //   setDisplayRowNumber(+displayRowNumber - 1);
-    // } else {
-    //   setDisplayRowNumber(0);
-    // }
     if (savedRowNumber && savedRowNumber > 0) {
       setSavedRowNumber(+savedRowNumber - 1);
     }
@@ -101,6 +96,10 @@ const RowCounterForm = () => {
     console.log(data);
     setRetreivedProjects(data);
     setSavedRowNumber(data[6].savedRowCount);
+    // retrievedProjects.map((data, index) => {
+    //   return data[index].savedRowCount;
+    // });
+    // setSavedRowNumber(retrievedProjects.savedRowCount);
     // setDisplayRowNumber(savedRowNumber);
     setRetrievedProjectName(retrievedProjectName);
     console.log("retrievedProjectName", retrievedProjectName);
@@ -114,11 +113,12 @@ const RowCounterForm = () => {
 
   useEffect(() => {
     resumeRowCount();
-    // setDisplayRowNumber(savedRowNumber);
+    setSavedRowNumber(retrievedProjects.savedRowCount);
   }, []);
 
   console.log("savedRowNumber", savedRowNumber);
   console.log("displayRowNumber", displayRowNumber);
+  console.log("retrievedProjects", retrievedProjects);
 
   return (
     <>
@@ -277,14 +277,6 @@ const RowCounterForm = () => {
               >
                 Row #&nbsp;{displayRowNumber}
               </Heading>
-              {/* <Heading
-                size="lg"
-                color="white"
-                textAlign="center"
-                className="display-row-count"
-              >
-                Row #&nbsp;
-              </Heading> */}
               {retrievedProjects.map((data, index) => {
                 return (
                   <>
@@ -295,7 +287,7 @@ const RowCounterForm = () => {
                       className="display-row-count"
                     >
                       {data.projectName === retrievedProjectName
-                        ? savedRowNumber
+                        ? savedRowNumber //data.savedRowCount 
                         : null}
                     </Heading>
                   </>
