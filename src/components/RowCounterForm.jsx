@@ -14,7 +14,7 @@ import {
 const RowCounterForm = () => {
   const [enterRowNumber, setEnterRowNumber] = useState("");
   const [displayRowNumber, setDisplayRowNumber] = useState(enterRowNumber);
-  const [savedRowNumber, setSavedRowNumber] = useState(0);
+  const [savedRowNumber, setSavedRowNumber] = useState(null);
   console.log(savedRowNumber);
   const [enterProjectName, setEnterProjectName] = useState("");
   const [displayProjectName, setDisplayProjectName] =
@@ -43,21 +43,25 @@ const RowCounterForm = () => {
   };
 
   const handleIncrementor = () => {
-    // console.log("displayRowNumber", displayRowNumber);
-    // console.log("savedRowNumber", savedRowNumber);
-    // if (!savedRowNumber) {
-    //   setDisplayRowNumber(+displayRowNumber + 1);
-    // } else {
-    //   setDisplayRowNumber(+savedRowNumber + 1);
-    // }
-    setDisplayRowNumber(+displayRowNumber + 1);
+    if (savedRowNumber) {
+      setSavedRowNumber(+savedRowNumber + 1);
+    }
+    if (displayRowNumber) {
+      setDisplayRowNumber(+displayRowNumber + 1);
+    }
   };
 
   const handleDecrementor = () => {
-    if (displayRowNumber > 0) {
-      setDisplayRowNumber(+displayRowNumber - 1);
-    } else {
-      setDisplayRowNumber(0);
+    // if (displayRowNumber > 0) {
+    //   setDisplayRowNumber(+displayRowNumber - 1);
+    // } else {
+    //   setDisplayRowNumber(0);
+    // }
+    if (savedRowNumber && savedRowNumber > 0) {
+      setSavedRowNumber(+savedRowNumber - 1);
+    }
+    if (displayRowNumber && displayRowNumber > 0) {
+      setDisplayRowNumber(+displayRowNumber + 1);
     }
   };
 
@@ -79,6 +83,7 @@ const RowCounterForm = () => {
 
     const data = await res.json();
     console.log(data);
+    setSavedRowNumber(data.savedRowCount);
     setDisplayRowNumber(data.savedRowCount);
     setDisplayProjectName(data.projectName);
     setDisplayRowNumber("");
@@ -95,17 +100,25 @@ const RowCounterForm = () => {
     const data = await res.json();
     console.log(data);
     setRetreivedProjects(data);
-    setSavedRowNumber(data.savedRowCount);
+    setSavedRowNumber(data[6].savedRowCount);
+    // setDisplayRowNumber(savedRowNumber);
     setRetrievedProjectName(retrievedProjectName);
     console.log("retrievedProjectName", retrievedProjectName);
     console.log("retrievedProjects", retrievedProjects);
     console.log("savedRowNumber", savedRowNumber);
+    // console.log("displayRowNumber", displayRowNumber);
     console.log(data.savedRowCount);
   };
 
+  
+
   useEffect(() => {
     resumeRowCount();
+    // setDisplayRowNumber(savedRowNumber);
   }, []);
+
+  console.log("savedRowNumber", savedRowNumber);
+  console.log("displayRowNumber", displayRowNumber);
 
   return (
     <>
@@ -220,6 +233,7 @@ const RowCounterForm = () => {
               justifyContent="center"
               alignItems="center"
             >
+              {/* Refactor at a later date by replacing null with displayProjectName and altering the styling to accommodate for the change. */}
               <Text
                 color="white"
                 textAlign="center"
@@ -281,7 +295,7 @@ const RowCounterForm = () => {
                       className="display-row-count"
                     >
                       {data.projectName === retrievedProjectName
-                        ? data.savedRowCount
+                        ? savedRowNumber
                         : null}
                     </Heading>
                   </>
