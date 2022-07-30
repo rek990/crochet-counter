@@ -14,7 +14,7 @@ import {
 const RowCounterForm = () => {
   const [enterRowNumber, setEnterRowNumber] = useState("");
   const [displayRowNumber, setDisplayRowNumber] = useState(enterRowNumber);
-  const [savedRowNumber, setSavedRowNumber] = useState(null);
+  let [savedRowNumber, setSavedRowNumber] = useState(displayRowNumber);
   console.log(savedRowNumber);
   const [enterProjectName, setEnterProjectName] = useState("");
   const [displayProjectName, setDisplayProjectName] =
@@ -94,26 +94,19 @@ const RowCounterForm = () => {
     const res = await fetch("http://localhost:3000/rowCount");
     const data = await res.json();
     console.log(data);
+    console.log(data[0]);
     setRetreivedProjects(data);
     setSavedRowNumber(data[6].savedRowCount);
-    // retrievedProjects.map((data, index) => {
-    //   return data[index].savedRowCount;
-    // });
-    // setSavedRowNumber(retrievedProjects.savedRowCount);
-    // setDisplayRowNumber(savedRowNumber);
     setRetrievedProjectName(retrievedProjectName);
     console.log("retrievedProjectName", retrievedProjectName);
     console.log("retrievedProjects", retrievedProjects);
     console.log("savedRowNumber", savedRowNumber);
-    // console.log("displayRowNumber", displayRowNumber);
     console.log(data.savedRowCount);
   };
 
-  
-
   useEffect(() => {
-    resumeRowCount();
-    setSavedRowNumber(retrievedProjects.savedRowCount);
+    resumeRowCount(() => {
+    });
   }, []);
 
   console.log("savedRowNumber", savedRowNumber);
@@ -287,7 +280,7 @@ const RowCounterForm = () => {
                       className="display-row-count"
                     >
                       {data.projectName === retrievedProjectName
-                        ? savedRowNumber //data.savedRowCount 
+                        ? savedRowNumber // data.savedRowCount 
                         : null}
                     </Heading>
                   </>
