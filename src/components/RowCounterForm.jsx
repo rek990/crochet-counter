@@ -43,8 +43,18 @@ const RowCounterForm = () => {
   };
 
   const handleIncrementor = () => {
+    // console.log(savedRowNumber);
+    // console.log(displayRowNumber);
+    // console.log(retrievedProjects);
+    // setSavedRowNumber(
+    //   retrievedProjects.map((row, index) => {
+    //     row = retrievedProjects[index].savedRowCount;
+    //     return row;
+    //   })
+    // );
     if (savedRowNumber) {
       setSavedRowNumber(+savedRowNumber + 1);
+      console.log(savedRowNumber);
     }
     if (displayRowNumber) {
       setDisplayRowNumber(+displayRowNumber + 1);
@@ -56,7 +66,7 @@ const RowCounterForm = () => {
       setSavedRowNumber(+savedRowNumber - 1);
     }
     if (displayRowNumber && displayRowNumber > 0) {
-      setDisplayRowNumber(+displayRowNumber + 1);
+      setDisplayRowNumber(+displayRowNumber - 1);
     }
   };
 
@@ -96,17 +106,25 @@ const RowCounterForm = () => {
     console.log(data);
     console.log(data[0]);
     setRetreivedProjects(data);
-    setSavedRowNumber(data[6].savedRowCount);
+    // hard code below needs to be removed
+    // setSavedRowNumber(data[5].savedRowCount);
+    // setSavedRowNumber(
+    data.map((row, index) => {
+      row = data[index].savedRowCount;
+      setSavedRowNumber(row);
+      return savedRowNumber;
+    });
+    // );
+    // setDisplayRowNumber(savedRowNumber);
     setRetrievedProjectName(retrievedProjectName);
     console.log("retrievedProjectName", retrievedProjectName);
     console.log("retrievedProjects", retrievedProjects);
     console.log("savedRowNumber", savedRowNumber);
-    console.log(data.savedRowCount);
+    // console.log(data.savedRowCount);
   };
 
   useEffect(() => {
-    resumeRowCount(() => {
-    });
+    resumeRowCount(() => {});
   }, []);
 
   console.log("savedRowNumber", savedRowNumber);
@@ -278,10 +296,12 @@ const RowCounterForm = () => {
                       color="white"
                       textAlign="center"
                       className="display-row-count"
+                      key={index}
                     >
                       {data.projectName === retrievedProjectName
-                        ? savedRowNumber // data.savedRowCount 
+                        ? savedRowNumber
                         : null}
+                      {/* {console.log(data.savedRowCount)} */}
                     </Heading>
                   </>
                 );
