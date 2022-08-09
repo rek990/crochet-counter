@@ -24,7 +24,7 @@ const RowCounterForm = () => {
   let [retrievedProjects, setRetreivedProjects] = useState([]);
 
   const handleSubmit = () => {
-    setDisplayRowNumber(enterRowNumber); // similar to document.getElementById("row-heading-number").innerText = enterRowNumber;
+    setDisplayRowNumber(enterRowNumber);
     setDisplayProjectName(enterProjectName);
     setEnterRowNumber("");
     setEnterProjectName("");
@@ -43,15 +43,6 @@ const RowCounterForm = () => {
   };
 
   const handleIncrementor = () => {
-    // console.log(savedRowNumber);
-    // console.log(displayRowNumber);
-    // console.log(retrievedProjects);
-    // setSavedRowNumber(
-    //   retrievedProjects.map((row, index) => {
-    //     row = retrievedProjects[index].savedRowCount;
-    //     return row;
-    //   })
-    // );
     if (savedRowNumber) {
       setSavedRowNumber(+savedRowNumber + 1);
       console.log(savedRowNumber);
@@ -104,23 +95,16 @@ const RowCounterForm = () => {
     const res = await fetch("http://localhost:3000/rowCount");
     const data = await res.json();
     console.log(data);
-    console.log(data[0]);
     setRetreivedProjects(data);
-    // hard code below needs to be removed
-    // setSavedRowNumber(data[5].savedRowCount);
-    // setSavedRowNumber(
-    data.map((row, index) => {
-      row = data[index].savedRowCount;
-      setSavedRowNumber(row);
-      return savedRowNumber;
-    });
-    // );
-    // setDisplayRowNumber(savedRowNumber);
+    // data.map((row, index) => {
+    //   row = data[index].savedRowCount;
+    //   setSavedRowNumber(row);
+    //   return savedRowNumber;
+    // });
     setRetrievedProjectName(retrievedProjectName);
     console.log("retrievedProjectName", retrievedProjectName);
     console.log("retrievedProjects", retrievedProjects);
     console.log("savedRowNumber", savedRowNumber);
-    // console.log(data.savedRowCount);
   };
 
   useEffect(() => {
@@ -223,7 +207,6 @@ const RowCounterForm = () => {
               }}
             ></Input>
           </GridItem>
-          {/* Move Resume Button Here */}
           <GridItem>
             <Button
               id="resume-counting-button"
@@ -299,9 +282,8 @@ const RowCounterForm = () => {
                       key={index}
                     >
                       {data.projectName === retrievedProjectName
-                        ? savedRowNumber
+                        ? data.savedRowCount //savedRowNumber
                         : null}
-                      {/* {console.log(data.savedRowCount)} */}
                     </Heading>
                   </>
                 );
