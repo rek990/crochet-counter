@@ -96,24 +96,18 @@ const RowCounterForm = () => {
     const data = await res.json();
     console.log(data);
     setRetreivedProjects(data);
-    // data.map((row, index) => {
-    //   row = data[index].savedRowCount;
-    //   setSavedRowNumber(row);
-    //   return savedRowNumber;
-    // });
     setRetrievedProjectName(retrievedProjectName);
-    console.log("retrievedProjectName", retrievedProjectName);
-    console.log("retrievedProjects", retrievedProjects);
-    console.log("savedRowNumber", savedRowNumber);
+    data.map((row, index) => {
+      if (data[index].projectName === retrievedProjectName) {
+        row = data[index].savedRowCount;
+        setSavedRowNumber(row);
+      }
+    });
   };
 
   useEffect(() => {
     resumeRowCount(() => {});
   }, []);
-
-  console.log("savedRowNumber", savedRowNumber);
-  console.log("displayRowNumber", displayRowNumber);
-  console.log("retrievedProjects", retrievedProjects);
 
   return (
     <>
@@ -282,7 +276,7 @@ const RowCounterForm = () => {
                       key={index}
                     >
                       {data.projectName === retrievedProjectName
-                        ? data.savedRowCount //savedRowNumber
+                        ? savedRowNumber
                         : null}
                     </Heading>
                   </>
