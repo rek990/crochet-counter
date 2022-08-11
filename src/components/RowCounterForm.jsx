@@ -22,6 +22,7 @@ const RowCounterForm = () => {
   const [retrievedProjectName, setRetrievedProjectName] =
     useState(displayProjectName);
   let [retrievedProjects, setRetreivedProjects] = useState([]);
+  const [projectId, setProjectId] = useState(null);
 
   const handleSubmit = () => {
     setDisplayRowNumber(enterRowNumber);
@@ -64,14 +65,19 @@ const RowCounterForm = () => {
   const saveRowCount = async (event) => {
     event.preventDefault();
     // PUT request
-    if (displayProjectName && savedRowNumber) {
-      const res = await fetch("http://localhost:3000/rowCount", {
+    if (projectId) {
+      // const uDisplayRowNumber = displayRowNumber;
+      // const uDisplayProjectName = displayProjectName;
+
+      const res = await fetch(`http://localhost:3000/rowCount/${projectId}`, {
         method: "PUT",
         credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          // savedRowCountU: uDisplayRowNumber,
+          // projectNameU: uDisplayProjectName,
           savedRowCount: displayRowNumber,
           projectName: displayProjectName,
         }), // this is how you format what goes in the PUT request
@@ -111,6 +117,9 @@ const RowCounterForm = () => {
     saveRowCount();
   }, []);
 
+  console.log("displayRowNumber", displayRowNumber);
+  console.log("savedRowNumber", savedRowNumber);
+
   const resumeRowCount = async (event) => {
     event.preventDefault();
     const res = await fetch("http://localhost:3000/rowCount");
@@ -124,11 +133,19 @@ const RowCounterForm = () => {
         setSavedRowNumber(row);
       }
     });
+    data.map((id, index) => {
+      if (data[index].projectName === retrievedProjectName) {
+        id = data[index].id;
+        setProjectId(id);
+      }
+    });
   };
 
   useEffect(() => {
     resumeRowCount(() => {});
   }, []);
+
+  console.log("projectId", projectId);
 
   return (
     <>
