@@ -1,0 +1,34 @@
+{
+  "rowCount": [
+    {
+      "savedRowCount": 10,
+      "projectName": "Granny Square",
+      "id": 1
+    },
+    {
+      "savedRowCount": 4,
+      "projectName": "Blanket",
+      "id": 2
+    },
+    {
+      "savedRowCount": 4,
+      "projectName": "Dishcloth",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "projectName": "Socks",
+      "savedRowCount": 53
+    },
+    {
+      "savedRowCount": 5,
+      "projectName": "Cat Sweater",
+      "id": 5
+    },
+    {
+      "savedRowCount": 7,
+      "projectName": "CAL Block 7",
+      "id": 6
+    }
+  ]
+}
