@@ -66,9 +66,6 @@ const RowCounterForm = () => {
     event.preventDefault();
     // PUT request
     if (projectId) {
-      // const uDisplayRowNumber = displayRowNumber;
-      // const uDisplayProjectName = displayProjectName;
-
       const res = await fetch(`http://localhost:3000/rowCount/${projectId}`, {
         method: "PUT",
         credentials: "include",
@@ -76,10 +73,8 @@ const RowCounterForm = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          // savedRowCountU: uDisplayRowNumber,
-          // projectNameU: uDisplayProjectName,
-          savedRowCount: displayRowNumber,
-          projectName: displayProjectName,
+          savedRowCount: savedRowNumber,
+          projectName: retrievedProjectName,
         }), // this is how you format what goes in the PUT request
       });
       const data = await res.json();
@@ -89,6 +84,8 @@ const RowCounterForm = () => {
       setDisplayProjectName(data.projectName);
       setDisplayRowNumber("");
       setDisplayProjectName("");
+      setSavedRowNumber("");
+      setRetrievedProjectName("");
     } else {
       // POST request
       const res = await fetch("http://localhost:3000/rowCount", {
@@ -102,7 +99,6 @@ const RowCounterForm = () => {
           projectName: displayProjectName,
         }), // this is how you format what goes in the POST request
       });
-
       const data = await res.json();
       console.log(data);
       setSavedRowNumber(data.savedRowCount);
@@ -111,6 +107,8 @@ const RowCounterForm = () => {
       setDisplayRowNumber("");
       setDisplayProjectName("");
     }
+    // setDisplayRowNumber("");
+    // setDisplayProjectName("");
   };
 
   useEffect(() => {
