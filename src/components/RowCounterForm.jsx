@@ -43,6 +43,37 @@ const RowCounterForm = () => {
     setRetreivedProjects([]);
   };
 
+  const handleDelete = async () => {
+    if (projectId) {
+      const res = await fetch(`http://localhost:3000/rowCount/${projectId}`, {
+        method: "DELETE",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          savedRowCount: savedRowNumber,
+          projectName: retrievedProjectName,
+        }), // this is how you format what goes in the PUT request
+      });
+      const data = await res.json();
+      console.log(data);
+      // setSavedRowNumber(data.savedRowCount);
+      // setDisplayRowNumber(data.savedRowCount);
+      // setDisplayProjectName(data.projectName);
+      setDisplayRowNumber("");
+      setDisplayProjectName("");
+      setSavedRowNumber("");
+      setRetrievedProjectName("");
+    } else {
+      handleResetAll();
+    }
+  };
+
+  useEffect(() => {
+    handleDelete();
+  }, []);
+
   const handleIncrementor = () => {
     if (savedRowNumber) {
       setSavedRowNumber(+savedRowNumber + 1);
@@ -362,7 +393,18 @@ const RowCounterForm = () => {
                 color="white"
                 onClick={handleResetAll}
               >
-                Reset All
+                Reset
+              </Button>
+
+              <Button
+                id="delete-entry"
+                type="reset"
+                size="sm"
+                bg="#5F9EA0"
+                color="white"
+                onClick={handleDelete}
+              >
+                Delete
               </Button>
             </HStack>
           </GridItem>
