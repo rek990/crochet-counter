@@ -3,7 +3,12 @@ import RowCounterForm from "./RowCounterForm";
 
 const RowCounterContainer = () => {
   return (
-    <Flex className="row-counter-container" direction="row" width="100%" justifyContent="center">
+    <Flex
+      className="row-counter-container"
+      direction="row"
+      width="100%"
+      justifyContent="center"
+    >
       <VStack>
         <Spacer />
         <Flex
@@ -18,9 +23,8 @@ const RowCounterContainer = () => {
             Row Counter
           </Heading>
         </Flex>
-        <br/>
-        <RowCounterForm/>
-        {/* Will need an API to add counter functionality based on pattern. When this happens, the <RowCounterForm/> will be the child of this parent component. */}
+        <br />
+        <RowCounterForm />
       </VStack>
     </Flex>
   );

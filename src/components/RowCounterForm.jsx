@@ -15,7 +15,6 @@ const RowCounterForm = () => {
   const [enterRowNumber, setEnterRowNumber] = useState("");
   const [displayRowNumber, setDisplayRowNumber] = useState(enterRowNumber);
   let [savedRowNumber, setSavedRowNumber] = useState(displayRowNumber);
-  console.log(savedRowNumber);
   const [enterProjectName, setEnterProjectName] = useState("");
   const [displayProjectName, setDisplayProjectName] =
     useState(enterProjectName);
@@ -58,9 +57,6 @@ const RowCounterForm = () => {
       });
       const data = await res.json();
       console.log(data);
-      // setSavedRowNumber(data.savedRowCount);
-      // setDisplayRowNumber(data.savedRowCount);
-      // setDisplayProjectName(data.projectName);
       setDisplayRowNumber("");
       setDisplayProjectName("");
       setSavedRowNumber("");
@@ -77,7 +73,6 @@ const RowCounterForm = () => {
   const handleIncrementor = () => {
     if (savedRowNumber) {
       setSavedRowNumber(+savedRowNumber + 1);
-      console.log(savedRowNumber);
     }
     if (displayRowNumber) {
       setDisplayRowNumber(+displayRowNumber + 1);
@@ -138,16 +133,11 @@ const RowCounterForm = () => {
       setDisplayRowNumber("");
       setDisplayProjectName("");
     }
-    // setDisplayRowNumber("");
-    // setDisplayProjectName("");
   };
 
   useEffect(() => {
     saveRowCount();
   }, []);
-
-  console.log("displayRowNumber", displayRowNumber);
-  console.log("savedRowNumber", savedRowNumber);
 
   const resumeRowCount = async (event) => {
     event.preventDefault();
@@ -173,8 +163,6 @@ const RowCounterForm = () => {
   useEffect(() => {
     resumeRowCount(() => {});
   }, []);
-
-  console.log("projectId", projectId);
 
   return (
     <>
@@ -288,7 +276,6 @@ const RowCounterForm = () => {
               justifyContent="center"
               alignItems="center"
             >
-              {/* Refactor at a later date by replacing null with displayProjectName and altering the styling to accommodate for the change. */}
               <Text
                 color="white"
                 textAlign="center"
@@ -383,8 +370,6 @@ const RowCounterForm = () => {
               >
                 Save
               </Button>
-              {/* Resume formerly here */}
-
               <Button
                 id="reset-row-count"
                 type="reset"
@@ -395,7 +380,6 @@ const RowCounterForm = () => {
               >
                 Reset
               </Button>
-
               <Button
                 id="delete-entry"
                 type="reset"
