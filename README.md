@@ -1,6 +1,6 @@
-# crochet-counter
+# Row Counter
 
-Crochet Counter allows crocheters to count rows while keeping track of the row patterns while they work. Users can input a pattern, and a row counter with its corresponding row pattern is displayed to help said user keep track of not only the row they are on but also the pattern they are supposed to implement on the given row. Upon completion, users can log their project to be saved under their project history.
+Row Counter (formerly Crochet Counter) is a tool to help fiber artists (crocheters, knitters, rug makers, basket weavers, or anyone in need of a counting tool) keep track of the row they are on with a given project. Users can input a project name and the row number that they want the counter to start on, and the project and row count is displayed on the UI. From there, users can increment/decrement to keep an accurate count of where they are on a project. Additionally, users can save their work to later resume their row counting. Upon completion, users can log their project to be saved under their project history.
 
 # Running App Locally
 
