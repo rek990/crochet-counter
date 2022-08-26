@@ -4,6 +4,20 @@ Row Counter (formerly Crochet Counter) is a tool to help fiber artists (crochete
 
 # Running App Locally
 
+# Getting Started with [JSON Server](https://www.npmjs.com/package/json-server)
+
+This project utilizes JSON Server as a pseudo backend.
+
+## Install JSON Server
+
+### `npm install -g json-server`
+
+## Start JSON Server
+
+### `json-server --watch db.json`
+
+## Go to http://localhost:3000
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
