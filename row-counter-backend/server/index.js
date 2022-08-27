@@ -16,6 +16,7 @@ MongoClient.connect(dbConnectionStr, { useUnifiedTopology: true }).then(
   (client) => {
     console.log(`Connected to ${dbName} Database`);
     db = client.db(dbName);
+    const projectsCollection = db.collection("projects");
 
     // set view engine for React (create-react-app)
     app.use(express.static("public"));

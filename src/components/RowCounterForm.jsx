@@ -53,7 +53,7 @@ const RowCounterForm = () => {
         body: JSON.stringify({
           savedRowCount: savedRowNumber,
           projectName: retrievedProjectName,
-        }), // this is how you format what goes in the PUT request
+        }), // this is how you format what goes in the DELETE request
       });
       const data = await res.json();
       console.log(data);
