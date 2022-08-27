@@ -97,6 +97,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 To enter project information, the user inputs the name of their project, along with the row they are starting/continuing their project on, and click "Submit Entry". The project's name and row count will appear on the UI.
 
+![Submit Entry](https://github.com/rek990/crochet-counter/blob/initial-backend/RCDemoSubmitEntry20220730.gif)
 <figure>
 <img src="video/RCDemoSubmitEntry20220730.gif" alt="Submit Entry Demo" style="width:25%">
 <figcaption align = "left"><b>Submitting Entry for Project and Row Number to appear on UI</b></figcaption>
@@ -106,6 +107,7 @@ To enter project information, the user inputs the name of their project, along w
 
 Once a user has entered their information, they can increment and decrement their count by clicking the "+" and "-" `<button/>`'s, respectively.
 
+![Increment/Decrement](https://github.com/rek990/crochet-counter/blob/initial-backend/RCDemoIncrement20220730.gif)
 <figure>
 <img src="video/RCDemoIncrement20220730.gif" alt="Incrementing and Decrementing" style="width:25%">
 <figcaption align = "left"><b>Incrementing and Decrementing</b></figcaption>
@@ -115,6 +117,7 @@ Once a user has entered their information, they can increment and decrement thei
 
 Should a user stop their work during the course of their project, they have the option of saving their work to continue in the future.
 
+![Retrieve Work](https://github.com/rek990/crochet-counter/blob/initial-backend/RCDemoRetrieveWork20220730.gif)
 <figure>
 <img src="video/RCDemoRetrieveWork20220730.gif" alt="Retrieving Work" style="width:25%">
 <figcaption align = "left"><b>Saving and Retrieving Projects</b></figcaption>
@@ -124,6 +127,7 @@ Should a user stop their work during the course of their project, they have the 
 
 Once work is retrieved, the row counting resumes.
 
+![Resume Work](https://github.com/rek990/crochet-counter/blob/initial-backend/RCDemoResumeCounting20220730.gif)
 <figure>
 <img src="video/RCDemoResumeCounting20220730.gif" alt="Resume Counting" style="width:25%">
 <figcaption align = "left"><b>Resuming Row Count from a Saved Project</b></figcaption>
@@ -131,6 +135,7 @@ Once work is retrieved, the row counting resumes.
 
 Once the user retrieves their saved data, they are able to update their row counts and then save the updated row counts to , keeping the row count on their project current.
 
+![Update](https://github.com/rek990/crochet-counter/blob/initial-backend/RCDemoUpdateWork20220812.gif)
 <figure>
 <img src="video/RCDemoUpdateWork20220812.gif" alt="Updating and Saving Work" style="width:25%">
 <figcaption align = "left"><b>Entering, Saving, Retrieving, Updating, and Resaving Previous Projects</b></figcaption>
@@ -140,6 +145,7 @@ Once the user retrieves their saved data, they are able to update their row coun
 
 Finally, if a user no longer wants to keep information on a given project, they can delete it.
 
+![Delete](https://github.com/rek990/crochet-counter/blob/initial-backend/RCDemoDeleteWork20220815.gif)
 <figure>
 <img src="video/RCDemoDeleteWork20220815.gif" alt="Deleting Work" style="width:25%">
 <figcaption align = "left"><b>Deleting Unwanted Projects</b></figcaption>
