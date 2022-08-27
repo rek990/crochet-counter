@@ -1,8 +1,24 @@
-# crochet-counter
+# Row Counter
 
-Crochet Counter allows crocheters to count rows while keeping track of the row patterns while they work. Users can input a pattern, and a row counter with its corresponding row pattern is displayed to help said user keep track of not only the row they are on but also the pattern they are supposed to implement on the given row. Upon completion, users can log their project to be saved under their project history.
+Row Counter (formerly Crochet Counter) is a tool to help fiber artists (crocheters, knitters, rug makers, basket weavers, or anyone in need of a counting tool) keep track of the row they are on with a given project. Users can input a project name and the row number that they want the counter to start on, and the project and row count is displayed on the UI. From there, users can increment/decrement to keep an accurate count of where they are on a project. Additionally, users can save their work to later resume their row counting. Upon completion, users can log their project to be saved under their project history.
 
 # Running App Locally
+
+# Getting Started with [JSON Server](https://www.npmjs.com/package/json-server)
+
+This project utilizes JSON Server as a pseudo backend.
+
+## Install JSON Server
+
+### `npm install -g json-server`
+
+## Start JSON Server
+
+### `json-server --watch db.json`
+
+## Go to http://localhost:3000/rowCount
+
+This will show the data of all saved projects and row counts.
 
 # Getting Started with Create React App
 
@@ -15,7 +31,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+As JSON Server runs on port 3000, you will be prompted in the terminal to use another port to view in your browser. Otherwise, open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
@@ -74,3 +90,58 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# How to Use the App
+
+## Entering Information
+
+To enter project information, the user inputs the name of their project, along with the row they are starting/continuing their project on, and click "Submit Entry". The project's name and row count will appear on the UI.
+
+<figure>
+<img src="video/RCDemoSubmitEntry20220730.gif" alt="Submit Entry Demo" style="width:25%">
+<figcaption align = "left"><b>Submitting Entry for Project and Row Number to appear on UI</b></figcaption>
+</figure>
+
+## Increment/Decrement
+
+Once a user has entered their information, they can increment and decrement their count by clicking the "+" and "-" `<button/>`'s, respectively.
+
+<figure>
+<img src="video/RCDemoIncrement20220730.gif" alt="Incrementing and Decrementing" style="width:25%">
+<figcaption align = "left"><b>Incrementing and Decrementing</b></figcaption>
+</figure>
+
+## Saving Work
+
+Should a user stop their work during the course of their project, they have the option of saving their work to continue in the future.
+
+<figure>
+<img src="video/RCDemoRetrieveWork20220730.gif" alt="Retrieving Work" style="width:25%">
+<figcaption align = "left"><b>Saving and Retrieving Projects</b></figcaption>
+</figure>
+
+## Resuming Work and Making Updates
+
+Once work is retrieved, the row counting resumes.
+
+<figure>
+<img src="video/RCDemoResumeCounting20220730.gif" alt="Resume Counting" style="width:25%">
+<figcaption align = "left"><b>Resuming Row Count from a Saved Project</b></figcaption>
+</figure>
+
+Once the user retrieves their saved data, they are able to update their row counts and then save the updated row counts to , keeping the row count on their project current.
+
+<figure>
+<img src="video/RCDemoUpdateWork20220812.gif" alt="Updating and Saving Work" style="width:25%">
+<figcaption align = "left"><b>Entering, Saving, Retrieving, Updating, and Resaving Previous Projects</b></figcaption>
+</figure>
+
+## Deleting Projects
+
+Finally, if a user no longer wants to keep information on a given project, they can delete it.
+
+<figure>
+<img src="video/RCDemoDeleteWork20220815.gif" alt="Deleting Work" style="width:25%">
+<figcaption align = "left"><b>Deleting Unwanted Projects</b></figcaption>
+</figure>
+
