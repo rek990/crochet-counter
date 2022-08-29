@@ -98,10 +98,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 To enter project information, the user inputs the name of their project, along with the row they are starting/continuing their project on, and click "Submit Entry". The project's name and row count will appear on the UI.
 
 ![Submit Entry](https://github.com/rek990/crochet-counter/blob/initial-backend/RCDemoSubmitEntry20220730.gif)
-<figure>
-<img src="video/RCDemoSubmitEntry20220730.gif" alt="Submit Entry Demo" style="width:25%">
-<figcaption align = "left"><b>Submitting Entry for Project and Row Number to appear on UI</b></figcaption>
-</figure>
 
 ## Increment/Decrement
 
