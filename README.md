@@ -126,3 +126,4 @@ Once the user retrieves their saved data, they are able to update their row coun
 Finally, if a user no longer wants to keep information on a given project, they can delete it.
 
 ![Delete](https://github.com/rek990/crochet-counter/blob/initial-backend/RCDemoDeleteWork20220815.gif)
+
