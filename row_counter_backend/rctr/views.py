@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from rest_framework import Response
-from rest_framework import api_view
+from django.http import HttpResponse, JsonResponse
+from rest_framework.parsers import JSONParser
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
 from rest_framework import status
 
 from .models import Project
@@ -16,19 +17,32 @@ def index(request):
     return HttpResponse("Hello, world. You're at the rctr index.")
 
 
-@api_view(['DELETE'])
-def delete_project(request, pk):
+@api_view(['GET', 'PUT', 'DELETE'])
+def retrieve_update_delete_project(request, pk):
     """
-    Deletes an entire project from the database.
+    Retrieves project data, updates project data, and deletes an entire project from the database.
     """
     try:
         project = Project.objects.get(pk=pk)
     except Project.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+        return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = ProjectSerializer(project)
+        return JsonResponse(serializer.data)
+
+    elif request.method == 'PUT':
+        data = JSONParser().parse(request)
+        serializer = ProjectSerializer(
+            project, data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return JsonResponse(serializer.data)
+        return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     if request.method == 'DELETE':
         project.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+        return HttpResponse(status=status.HTTP_204_NO_CONTENT)
 
 
 @api_view(['POST'])
@@ -37,37 +51,9 @@ def save_project(request):
     Saves the initial data of a project, thus creating a new project in the database.
     """
     if request.method == 'POST':
+        data = JSONParser().parse(request)
         serializer = ProjectSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-@api_view(['PUT'])
-def resume_project(request, pk):
-    """Saves a project to the database and updates the saved row count information on previously saved projects."""
-    try:
-        project = Project.objects.get(pk=pk)
-    except Project.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-    if request.method == 'PUT':
-        serializer = ProjectSerializer(
-            project, data=request.data, context={'request': request})
-        if serializer.is_valid():
-            serializer.save()
-            return Response(status=status.HTTP_205_RESET_CONTENT)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-@api_view(['GET'])
-def get_project(request):
-    """
-    Retrieves a previous project name, along with the last saved row count.
-    """
-    if request.method == 'GET':
-        data = Project.objects.all()
-        serializer = ProjectSerializer(
-            data, context={'request': request}, many=True)
-        return Response(serializer.data)
+            return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

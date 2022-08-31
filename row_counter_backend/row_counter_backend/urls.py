@@ -14,10 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import include, path, re_path
+from rctr import views
 
 urlpatterns = [
     # 1. 'row-counter/' route: takes you to 'rctr.urls' in /rctr/urls.py
+    # see logrocket tutorial to see how the urlpatterns were set up for each view in row-counter, and adjust accordingly
     path('row-counter/', include('rctr.urls')),
     path('admin/', admin.site.urls),
+
 ]
