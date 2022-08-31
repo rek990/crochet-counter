@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
+    # 1. 'row-counter/' route: takes you to 'rctr.urls' in /rctr/urls.py
     path('row-counter/', include('rctr.urls')),
     path('admin/', admin.site.urls),
 ]
