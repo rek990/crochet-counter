@@ -23,6 +23,8 @@ const RowCounterForm = () => {
   let [retrievedProjects, setRetreivedProjects] = useState([]);
   const [projectId, setProjectId] = useState(null);
 
+  const API_URL = "http://localhost:8000/row-counter/";
+
   const handleSubmit = () => {
     setDisplayRowNumber(enterRowNumber);
     setDisplayProjectName(enterProjectName);
