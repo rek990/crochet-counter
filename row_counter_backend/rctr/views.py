@@ -17,21 +17,21 @@ def index(request):
     return HttpResponse("Hello, world. You're at the rctr index.")
 
 
-@api_view(['GET', 'PUT', 'DELETE'])
-def retrieve_update_delete_project(request, pk):
+@api_view(['PUT', 'DELETE'])
+def update_delete_project(request, pk):
     """
-    Retrieves project data, updates project data, and deletes an entire project from the database.
+    Updates project data and deletes an entire project from the database.
     """
     try:
         project = Project.objects.get(pk=pk)
     except Project.DoesNotExist:
         return HttpResponse(status=status.HTTP_404_NOT_FOUND)
 
-    if request.method == 'GET':
-        serializer = ProjectSerializer(project)
-        return JsonResponse(serializer.data)
+    # if request.method == 'GET':
+    #     serializer = ProjectSerializer(project)
+    #     return JsonResponse(serializer.data)
 
-    elif request.method == 'PUT':
+    if request.method == 'PUT':
         data = JSONParser().parse(request)
         serializer = ProjectSerializer(
             project, data=data)
@@ -40,20 +40,36 @@ def retrieve_update_delete_project(request, pk):
             return JsonResponse(serializer.data)
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    if request.method == 'DELETE':
+    elif request.method == 'DELETE':
         project.delete()
         return HttpResponse(status=status.HTTP_204_NO_CONTENT)
 
 
-@api_view(['POST'])
-def save_project(request):
+@api_view(['GET', 'POST'])
+def retrieve_and_save_project(request):
     """
-    Saves the initial data of a project, thus creating a new project in the database.
+    Saves the initial data of a project, thus creating a new project in the database, and retrieves previously saved data.
     """
-    if request.method == 'POST':
+    if request.method == 'GET':
+        project = Project.objects.all()
+        serializer = ProjectSerializer(project, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+    elif request.method == 'POST':
         data = JSONParser().parse(request)
-        serializer = ProjectSerializer(data=request.data)
+        serializer = ProjectSerializer(data=data)
         if serializer.is_valid():
             serializer.save()
             return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+# @api_view(['GET'])
+# def retrieve_project(request):
+#     """
+#     Retrieves previously saved data.
+#     """
+#     if request.method == 'GET':
+#         project = Project.objects.all()
+#         serializer = ProjectSerializer(project, many=True)
+#         return JsonResponse(serializer.data, safe=False)

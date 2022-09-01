@@ -46,17 +46,21 @@ const RowCounterForm = () => {
 
   const handleDelete = async () => {
     if (projectId) {
-      const res = await fetch(`http://localhost:3000/rowCount/${projectId}`, {
-        method: "DELETE",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          savedRowCount: savedRowNumber,
-          projectName: retrievedProjectName,
-        }), // this is how you format what goes in the DELETE request
-      });
+      // const res = await fetch(`http://localhost:3000/rowCount/${projectId}`, {
+      const res = await fetch(
+        `http://localhost:8000/row-counter/${projectId}`,
+        {
+          method: "DELETE",
+          // credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            savedRowCount: savedRowNumber,
+            projectName: retrievedProjectName,
+          }), // this is how you format what goes in the DELETE request
+        }
+      );
       const data = await res.json();
       console.log(data);
       setDisplayRowNumber("");
@@ -105,33 +109,47 @@ const RowCounterForm = () => {
           projectName: retrievedProjectName,
         }), // this is how you format what goes in the PUT request
       });
+      // const res = await fetch(`${API_URL}rctr/${projectId}`, {
+      //   method: "PUT",
+      //   credentials: "include",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify({
+      //     saved_row_count: savedRowNumber,
+      //     project_name: retrievedProjectName,
+      //   }), // this is how you format what goes in the PUT request
+      // });
       const data = await res.json();
       console.log(data);
       setSavedRowNumber(data.savedRowCount);
       setDisplayRowNumber(data.savedRowCount);
       setDisplayProjectName(data.projectName);
+      // setSavedRowNumber(data.saved_row_count);
+      // setDisplayRowNumber(data.saved_row_count);
+      // setDisplayProjectName(data.project_name);
       setDisplayRowNumber("");
       setDisplayProjectName("");
       setSavedRowNumber("");
       setRetrievedProjectName("");
     } else {
       // POST request
-      const res = await fetch("http://localhost:3000/rowCount", {
+      const res = await fetch("http://localhost:8000/row-counter/rctr/", {
         method: "POST",
-        credentials: "include",
+        // credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          savedRowCount: displayRowNumber,
-          projectName: displayProjectName,
+          saved_row_count: displayRowNumber,
+          project_name: displayProjectName,
         }), // this is how you format what goes in the POST request
       });
       const data = await res.json();
       console.log(data);
-      setSavedRowNumber(data.savedRowCount);
-      setDisplayRowNumber(data.savedRowCount);
-      setDisplayProjectName(data.projectName);
+      setSavedRowNumber(data.saved_row_count);
+      setDisplayRowNumber(data.saved_row_count);
+      setDisplayProjectName(data.project_name);
       setDisplayRowNumber("");
       setDisplayProjectName("");
     }
@@ -143,20 +161,21 @@ const RowCounterForm = () => {
 
   const resumeRowCount = async (event) => {
     event.preventDefault();
-    const res = await fetch("http://localhost:3000/rowCount");
+    // const res = await fetch("http://localhost:3000/rowCount");
+    const res = await fetch(`http://localhost:8000/row-count/rctr/`);
     const data = await res.json();
     console.log(data);
     setRetreivedProjects(data);
     setRetrievedProjectName(retrievedProjectName);
     data.map((row, index) => {
-      if (data[index].projectName === retrievedProjectName) {
-        row = data[index].savedRowCount;
+      if (data[index].project_name === retrievedProjectName) {
+        row = data[index].saved_row_count;
         setSavedRowNumber(row);
       }
     });
     data.map((id, index) => {
-      if (data[index].projectName === retrievedProjectName) {
-        id = data[index].id;
+      if (data[index].project_name === retrievedProjectName) {
+        id = data[index].pk;
         setProjectId(id);
       }
     });
