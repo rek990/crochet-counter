@@ -162,7 +162,7 @@ const RowCounterForm = () => {
   const resumeRowCount = async (event) => {
     event.preventDefault();
     // const res = await fetch("http://localhost:3000/rowCount");
-    const res = await fetch(`http://localhost:8000/row-count/rctr/`);
+    const res = await fetch(`http://localhost:8000/row-counter/rctr/`);
     const data = await res.json();
     console.log(data);
     setRetreivedProjects(data);
@@ -314,8 +314,8 @@ const RowCounterForm = () => {
                       key={index}
                     >
                       <b>
-                        {data.projectName === retrievedProjectName
-                          ? data.projectName
+                        {data.project_name === retrievedProjectName
+                          ? data.project_name
                           : null}
                       </b>
                     </Text>
@@ -350,7 +350,7 @@ const RowCounterForm = () => {
                       className="display-row-count"
                       key={index}
                     >
-                      {data.projectName === retrievedProjectName
+                      {data.project_name === retrievedProjectName
                         ? savedRowNumber
                         : null}
                     </Heading>
