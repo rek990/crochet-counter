@@ -25,11 +25,7 @@ def update_delete_project(request, pk):
     try:
         project = Project.objects.get(pk=pk)
     except Project.DoesNotExist:
-        return HttpResponse(status=status.HTTP_404_NOT_FOUND)
-
-    # if request.method == 'GET':
-    #     serializer = ProjectSerializer(project)
-    #     return JsonResponse(serializer.data)
+        return JsonResponse(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'PUT':
         data = JSONParser().parse(request)
@@ -42,7 +38,7 @@ def update_delete_project(request, pk):
 
     elif request.method == 'DELETE':
         project.delete()
-        return HttpResponse(status=status.HTTP_204_NO_CONTENT)
+        return JsonResponse(status=status.HTTP_204_NO_CONTENT)
 
 
 @api_view(['GET', 'POST'])
@@ -62,14 +58,3 @@ def retrieve_and_save_project(request):
             serializer.save()
             return JsonResponse(serializer.data, status=status.HTTP_201_CREATED)
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-# @api_view(['GET'])
-# def retrieve_project(request):
-#     """
-#     Retrieves previously saved data.
-#     """
-#     if request.method == 'GET':
-#         project = Project.objects.all()
-#         serializer = ProjectSerializer(project, many=True)
-#         return JsonResponse(serializer.data, safe=False)

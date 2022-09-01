@@ -13,5 +13,4 @@ urlpatterns = [
     # /row-counter/rctr/pk
     path('rctr/<int:pk>/', views.update_delete_project,
          name='update_delete_project'),
-    # path('rctr/', views.retrieve_project, name='retrieve_project')
 ]

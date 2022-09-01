@@ -45,10 +45,11 @@ const RowCounterForm = () => {
   };
 
   const handleDelete = async () => {
+    console.log(projectId);
     if (projectId) {
       // const res = await fetch(`http://localhost:3000/rowCount/${projectId}`, {
       const res = await fetch(
-        `http://localhost:8000/row-counter/${projectId}`,
+        `http://localhost:8000/row-counter/${projectId}/`,
         {
           method: "DELETE",
           // credentials: "include",
@@ -56,8 +57,8 @@ const RowCounterForm = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            savedRowCount: savedRowNumber,
-            projectName: retrievedProjectName,
+            saved_row_count: savedRowNumber,
+            project_name: retrievedProjectName,
           }), // this is how you format what goes in the DELETE request
         }
       );
@@ -96,6 +97,7 @@ const RowCounterForm = () => {
 
   const saveRowCount = async (event) => {
     event.preventDefault();
+    console.log(projectId);
     // PUT request
     if (projectId) {
       const res = await fetch(`http://localhost:3000/rowCount/${projectId}`, {
@@ -161,7 +163,6 @@ const RowCounterForm = () => {
 
   const resumeRowCount = async (event) => {
     event.preventDefault();
-    // const res = await fetch("http://localhost:3000/rowCount");
     const res = await fetch(`http://localhost:8000/row-counter/rctr/`);
     const data = await res.json();
     console.log(data);
