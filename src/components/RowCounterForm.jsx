@@ -102,17 +102,6 @@ const RowCounterForm = () => {
     console.log(projectId);
     // PUT request
     if (projectId) {
-      // const res = await fetch(`http://localhost:3000/rowCount/${projectId}`, {
-      //   method: "PUT",
-      //   credentials: "include",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     savedRowCount: savedRowNumber,
-      //     projectName: retrievedProjectName,
-      //   }), // this is how you format what goes in the PUT request
-      // });
       const res = await fetch(
         `http://localhost:8000/row-counter/rctr/${projectId}/`,
         {
@@ -129,9 +118,6 @@ const RowCounterForm = () => {
       );
       const data = await res.json();
       console.log(data);
-      // setSavedRowNumber(data.savedRowCount);
-      // setDisplayRowNumber(data.savedRowCount);
-      // setDisplayProjectName(data.projectName);
       setSavedRowNumber(data.saved_row_count);
       setDisplayRowNumber(data.saved_row_count);
       setDisplayProjectName(data.project_name);
