@@ -46,10 +46,12 @@ const RowCounterForm = () => {
 
   const handleDelete = async () => {
     console.log(projectId);
+    console.log(savedRowNumber);
+    console.log(retrievedProjectName);
     if (projectId) {
       // const res = await fetch(`http://localhost:3000/rowCount/${projectId}`, {
       const res = await fetch(
-        `http://localhost:8000/row-counter/${projectId}/`,
+        `http://localhost:8000/row-counter/rctr/${projectId}/`,
         {
           method: "DELETE",
           // credentials: "include",
@@ -100,36 +102,39 @@ const RowCounterForm = () => {
     console.log(projectId);
     // PUT request
     if (projectId) {
-      const res = await fetch(`http://localhost:3000/rowCount/${projectId}`, {
-        method: "PUT",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          savedRowCount: savedRowNumber,
-          projectName: retrievedProjectName,
-        }), // this is how you format what goes in the PUT request
-      });
-      // const res = await fetch(`${API_URL}rctr/${projectId}`, {
+      // const res = await fetch(`http://localhost:3000/rowCount/${projectId}`, {
       //   method: "PUT",
       //   credentials: "include",
       //   headers: {
       //     "Content-Type": "application/json",
       //   },
       //   body: JSON.stringify({
-      //     saved_row_count: savedRowNumber,
-      //     project_name: retrievedProjectName,
+      //     savedRowCount: savedRowNumber,
+      //     projectName: retrievedProjectName,
       //   }), // this is how you format what goes in the PUT request
       // });
+      const res = await fetch(
+        `http://localhost:8000/row-counter/rctr/${projectId}/`,
+        {
+          method: "PUT",
+          // credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            saved_row_count: savedRowNumber,
+            project_name: retrievedProjectName,
+          }), // this is how you format what goes in the PUT request
+        }
+      );
       const data = await res.json();
       console.log(data);
-      setSavedRowNumber(data.savedRowCount);
-      setDisplayRowNumber(data.savedRowCount);
-      setDisplayProjectName(data.projectName);
-      // setSavedRowNumber(data.saved_row_count);
-      // setDisplayRowNumber(data.saved_row_count);
-      // setDisplayProjectName(data.project_name);
+      // setSavedRowNumber(data.savedRowCount);
+      // setDisplayRowNumber(data.savedRowCount);
+      // setDisplayProjectName(data.projectName);
+      setSavedRowNumber(data.saved_row_count);
+      setDisplayRowNumber(data.saved_row_count);
+      setDisplayProjectName(data.project_name);
       setDisplayRowNumber("");
       setDisplayProjectName("");
       setSavedRowNumber("");

@@ -13,8 +13,8 @@ from .serializers import *
 # 3. 'index' view: GET request rendering 'Hello, world. You're at the rctr index.'
 
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the rctr index.")
+# def index(request):
+#     return HttpResponse("Hello, world. You're at the rctr index.")
 
 
 @api_view(['PUT', 'DELETE'])
@@ -25,7 +25,7 @@ def update_delete_project(request, pk):
     try:
         project = Project.objects.get(pk=pk)
     except Project.DoesNotExist:
-        return JsonResponse(status=status.HTTP_404_NOT_FOUND)
+        return HttpResponse(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'PUT':
         data = JSONParser().parse(request)
