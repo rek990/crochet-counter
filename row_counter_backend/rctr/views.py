@@ -13,8 +13,8 @@ from .serializers import *
 # 3. 'index' view: GET request rendering 'Hello, world. You're at the rctr index.'
 
 
-# def index(request):
-#     return HttpResponse("Hello, world. You're at the rctr index.")
+def index(request):
+    return HttpResponse("Hello, world. You're at the rctr index.")
 
 
 @api_view(['PUT', 'DELETE'])
@@ -38,7 +38,7 @@ def update_delete_project(request, pk):
 
     elif request.method == 'DELETE':
         project.delete()
-        return JsonResponse(status=status.HTTP_204_NO_CONTENT)
+        return HttpResponse(status=status.HTTP_204_NO_CONTENT)
 
 
 @api_view(['GET', 'POST'])

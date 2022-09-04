@@ -44,28 +44,21 @@ const RowCounterForm = () => {
     setRetreivedProjects([]);
   };
 
-  const handleDelete = async () => {
+  const handleDelete = async (event) => {
+    event.preventDefault();
     console.log(projectId);
     console.log(savedRowNumber);
     console.log(retrievedProjectName);
     if (projectId) {
-      // const res = await fetch(`http://localhost:3000/rowCount/${projectId}`, {
       const res = await fetch(
         `http://localhost:8000/row-counter/rctr/${projectId}/`,
         {
           method: "DELETE",
-          // credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            saved_row_count: savedRowNumber,
-            project_name: retrievedProjectName,
-          }), // this is how you format what goes in the DELETE request
         }
       );
-      const data = await res.json();
-      console.log(data);
+      console.log(
+        `${retrievedProjectName}, ID ${projectId}, has been successfully deleted.`
+      );
       setDisplayRowNumber("");
       setDisplayProjectName("");
       setSavedRowNumber("");
