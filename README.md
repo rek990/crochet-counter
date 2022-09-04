@@ -4,92 +4,58 @@ Row Counter (formerly Crochet Counter) is a tool to help fiber artists (crochete
 
 # Running App Locally
 
-# Getting Started with [JSON Server](https://www.npmjs.com/package/json-server)
+To view the code on this repo, clone and navigate into the project directory:
 
-This project utilizes JSON Server as a pseudo backend.
+```sh
+git clone git@github.com:username/crochet-counter.git
+cd crochet-counter
+```
 
-## Install JSON Server
+# Backend
 
-### `npm install -g json-server`
+## Getting Started with Django
 
-## Start JSON Server
+This project utilizes Django as the backend.
 
-### `json-server --watch db.json`
+### Python 3 Virtual Environment
 
-## Go to http://localhost:3000/rowCount
+Create and activate a Python 3 virtual environment and then install all required packages.
 
-This will show the data of all saved projects and row counts.
+```sh
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
 
-# Getting Started with Create React App
+### Install Django
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Once the virtual environment is created and activated, install Django.
 
-## Available Scripts
+`python -m pip install Django`
 
-In the project directory, you can run:
+### Start the Django Development Server
 
-### `npm start`
+After Django is installed, navigate into the `row_counter_backend` directory, launch the server.
 
-Runs the app in the development mode.\
-As JSON Server runs on port 3000, you will be prompted in the terminal to use another port to view in your browser. Otherwise, open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```sh
+cd row_counter_backend
+python manage.py runserver
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Frontend
 
-### `npm test`
+From the main project directory (`crochet-counter`), install the required packages:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```sh
+cd sat_frontend
+npm install
+```
 
-### `npm run build`
+To start the frontend development server:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+`npm start`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The frontend server runs on [http://localhost:3000](http://localhost:3000).
 
 # How to Use the App
 
@@ -126,4 +92,3 @@ Once the user retrieves their saved data, they are able to update their row coun
 Finally, if a user no longer wants to keep information on a given project, they can delete it.
 
 ![Delete](https://github.com/rek990/crochet-counter/blob/initial-backend/RCDemoDeleteWork20220815.gif)
-
