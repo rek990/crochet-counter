@@ -35,7 +35,7 @@ Once the virtual environment is created and activated, install Django.
 
 ### Start the Django Development Server
 
-After Django is installed, navigate into the `row_counter_backend` directory, launch the server.
+After Django is installed and the virtual environemnt is active, navigate into the `row_counter_backend` directory, launch the server.
 
 ```sh
 cd row_counter_backend
