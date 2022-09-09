@@ -46,17 +46,11 @@ const RowCounterForm = () => {
 
   const handleDelete = async (event) => {
     event.preventDefault();
-    console.log(projectId);
-    console.log(savedRowNumber);
-    console.log(retrievedProjectName);
     if (projectId) {
-      const res = await fetch(
-        `http://localhost:8000/row-counter/rctr/${projectId}/`,
-        {
-          method: "DELETE",
-        }
-      );
-      console.log(
+      const res = await fetch(`${API_URL}rctr/${projectId}/`, {
+        method: "DELETE",
+      });
+      alert(
         `${retrievedProjectName}, ID ${projectId}, has been successfully deleted.`
       );
       setDisplayRowNumber("");
@@ -92,23 +86,19 @@ const RowCounterForm = () => {
 
   const saveRowCount = async (event) => {
     event.preventDefault();
-    console.log(projectId);
     // PUT request
     if (projectId) {
-      const res = await fetch(
-        `http://localhost:8000/row-counter/rctr/${projectId}/`,
-        {
-          method: "PUT",
-          // credentials: "include",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            saved_row_count: savedRowNumber,
-            project_name: retrievedProjectName,
-          }), // this is how you format what goes in the PUT request
-        }
-      );
+      const res = await fetch(`${API_URL}rctr/${projectId}/`, {
+        method: "PUT",
+        // credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          saved_row_count: savedRowNumber,
+          project_name: retrievedProjectName,
+        }), // this is how you format what goes in the PUT request
+      });
       const data = await res.json();
       console.log(data);
       setSavedRowNumber(data.saved_row_count);
@@ -120,7 +110,7 @@ const RowCounterForm = () => {
       setRetrievedProjectName("");
     } else {
       // POST request
-      const res = await fetch("http://localhost:8000/row-counter/rctr/", {
+      const res = await fetch(`${API_URL}rctr/`, {
         method: "POST",
         // credentials: "include",
         headers: {
@@ -147,7 +137,7 @@ const RowCounterForm = () => {
 
   const resumeRowCount = async (event) => {
     event.preventDefault();
-    const res = await fetch(`http://localhost:8000/row-counter/rctr/`);
+    const res = await fetch(`${API_URL}rctr/`);
     const data = await res.json();
     console.log(data);
     setRetreivedProjects(data);
