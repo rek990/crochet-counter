@@ -1,76 +1,88 @@
-# crochet-counter
+# Row Counter
 
-Crochet Counter allows crocheters to count rows while keeping track of the row patterns while they work. Users can input a pattern, and a row counter with its corresponding row pattern is displayed to help said user keep track of not only the row they are on but also the pattern they are supposed to implement on the given row. Upon completion, users can log their project to be saved under their project history.
+Row Counter (formerly Crochet Counter) is a tool to help fiber artists (crocheters, knitters, rug makers, basket weavers, or anyone in need of a counting tool) keep track of the row they are on with a given project. Users can input a project name and the row number that they want the counter to start on, and the project and row count is displayed on the UI. From there, users can increment/decrement to keep an accurate count of where they are on a project. Additionally, users can save their work to later resume their row counting. Upon completion, users can log their project to be saved under their project history.
 
 # Running App Locally
 
-# Getting Started with Create React App
+To view the code on this repo, clone and navigate into the project directory:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```sh
+git clone git@github.com:username/crochet-counter.git
+cd crochet-counter
+```
 
-## Available Scripts
+# Backend
 
-In the project directory, you can run:
+## Getting Started with Django
 
-### `npm start`
+This project utilizes Django as the backend.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Python 3 Virtual Environment
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Create and activate a Python 3 virtual environment and then install all required packages.
 
-### `npm test`
+```sh
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Start the Django Development Server
 
-### `npm run build`
+After Django is installed and the virtual environemnt is active, navigate into the `row_counter_backend` directory, launch the server.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```sh
+cd row_counter_backend
+python manage.py runserver
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Frontend
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+From the main project directory (`crochet-counter`), install the required packages:
 
-### `npm run eject`
+```sh
+cd sat_frontend
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+To start the frontend development server:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`npm start`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The frontend server runs on [http://localhost:3000](http://localhost:3000).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# How to Use the App
 
-## Learn More
+## Entering Information
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To enter project information, the user inputs the name of their project, along with the row they are starting/continuing their project on, and click "Submit Entry". The project's name and row count will appear on the UI.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Submit Entry](https://github.com/rek990/crochet-counter/blob/initial-backend/RCDemoSubmitEntry20220730.gif)
 
-### Code Splitting
+## Increment/Decrement
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Once a user has entered their information, they can increment and decrement their count by clicking the "+" and "-" `<button/>`'s, respectively.
 
-### Analyzing the Bundle Size
+![Increment/Decrement](https://github.com/rek990/crochet-counter/blob/initial-backend/RCDemoIncrement20220730.gif)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Saving Work
 
-### Making a Progressive Web App
+Should a user stop their work during the course of their project, they have the option of saving their work to continue in the future.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+![Retrieve Work](https://github.com/rek990/crochet-counter/blob/initial-backend/RCDemoRetrieveWork20220730.gif)
 
-### Advanced Configuration
+## Resuming Work and Making Updates
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Once work is retrieved, the row counting resumes.
 
-### Deployment
+![Resume Work](https://github.com/rek990/crochet-counter/blob/initial-backend/RCDemoResumeCounting20220730.gif)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Once the user retrieves their saved data, they are able to update their row counts and then save the updated row counts to , keeping the row count on their project current.
 
-### `npm run build` fails to minify
+![Update](https://github.com/rek990/crochet-counter/blob/initial-backend/RCDemoUpdateWork20220812.gif)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Deleting Projects
+
+Finally, if a user no longer wants to keep information on a given project, they can delete it.
+
+![Delete](https://github.com/rek990/crochet-counter/blob/initial-backend/RCDemoDeleteWork20220815.gif)

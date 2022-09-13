@@ -23,6 +23,8 @@ const RowCounterForm = () => {
   let [retrievedProjects, setRetreivedProjects] = useState([]);
   const [projectId, setProjectId] = useState(null);
 
+  const API_URL = "http://localhost:8000/row-counter/";
+
   const handleSubmit = () => {
     setDisplayRowNumber(enterRowNumber);
     setDisplayProjectName(enterProjectName);
@@ -42,21 +44,15 @@ const RowCounterForm = () => {
     setRetreivedProjects([]);
   };
 
-  const handleDelete = async () => {
+  const handleDelete = async (event) => {
+    event.preventDefault();
     if (projectId) {
-      const res = await fetch(`http://localhost:3000/rowCount/${projectId}`, {
+      const res = await fetch(`${API_URL}rctr/${projectId}/`, {
         method: "DELETE",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          savedRowCount: savedRowNumber,
-          projectName: retrievedProjectName,
-        }), // this is how you format what goes in the PUT request
       });
-      const data = await res.json();
-      console.log(data);
+      alert(
+        `${retrievedProjectName}, ID ${projectId}, has been successfully deleted.`
+      );
       setDisplayRowNumber("");
       setDisplayProjectName("");
       setSavedRowNumber("");
@@ -92,44 +88,44 @@ const RowCounterForm = () => {
     event.preventDefault();
     // PUT request
     if (projectId) {
-      const res = await fetch(`http://localhost:3000/rowCount/${projectId}`, {
+      const res = await fetch(`${API_URL}rctr/${projectId}/`, {
         method: "PUT",
-        credentials: "include",
+        // credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          savedRowCount: savedRowNumber,
-          projectName: retrievedProjectName,
+          saved_row_count: savedRowNumber,
+          project_name: retrievedProjectName,
         }), // this is how you format what goes in the PUT request
       });
       const data = await res.json();
       console.log(data);
-      setSavedRowNumber(data.savedRowCount);
-      setDisplayRowNumber(data.savedRowCount);
-      setDisplayProjectName(data.projectName);
+      setSavedRowNumber(data.saved_row_count);
+      setDisplayRowNumber(data.saved_row_count);
+      setDisplayProjectName(data.project_name);
       setDisplayRowNumber("");
       setDisplayProjectName("");
       setSavedRowNumber("");
       setRetrievedProjectName("");
     } else {
       // POST request
-      const res = await fetch("http://localhost:3000/rowCount", {
+      const res = await fetch(`${API_URL}rctr/`, {
         method: "POST",
-        credentials: "include",
+        // credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          savedRowCount: displayRowNumber,
-          projectName: displayProjectName,
+          saved_row_count: displayRowNumber,
+          project_name: displayProjectName,
         }), // this is how you format what goes in the POST request
       });
       const data = await res.json();
       console.log(data);
-      setSavedRowNumber(data.savedRowCount);
-      setDisplayRowNumber(data.savedRowCount);
-      setDisplayProjectName(data.projectName);
+      setSavedRowNumber(data.saved_row_count);
+      setDisplayRowNumber(data.saved_row_count);
+      setDisplayProjectName(data.project_name);
       setDisplayRowNumber("");
       setDisplayProjectName("");
     }
@@ -141,20 +137,20 @@ const RowCounterForm = () => {
 
   const resumeRowCount = async (event) => {
     event.preventDefault();
-    const res = await fetch("http://localhost:3000/rowCount");
+    const res = await fetch(`${API_URL}rctr/`);
     const data = await res.json();
     console.log(data);
     setRetreivedProjects(data);
     setRetrievedProjectName(retrievedProjectName);
     data.map((row, index) => {
-      if (data[index].projectName === retrievedProjectName) {
-        row = data[index].savedRowCount;
+      if (data[index].project_name === retrievedProjectName) {
+        row = data[index].saved_row_count;
         setSavedRowNumber(row);
       }
     });
     data.map((id, index) => {
-      if (data[index].projectName === retrievedProjectName) {
-        id = data[index].id;
+      if (data[index].project_name === retrievedProjectName) {
+        id = data[index].pk;
         setProjectId(id);
       }
     });
@@ -293,8 +289,8 @@ const RowCounterForm = () => {
                       key={index}
                     >
                       <b>
-                        {data.projectName === retrievedProjectName
-                          ? data.projectName
+                        {data.project_name === retrievedProjectName
+                          ? data.project_name
                           : null}
                       </b>
                     </Text>
@@ -329,7 +325,7 @@ const RowCounterForm = () => {
                       className="display-row-count"
                       key={index}
                     >
-                      {data.projectName === retrievedProjectName
+                      {data.project_name === retrievedProjectName
                         ? savedRowNumber
                         : null}
                     </Heading>

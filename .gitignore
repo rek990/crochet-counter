@@ -21,3 +21,18 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+row_counter_backend/db.sqlite3
+row_counter_backend/row_counter_backend/__pycache__/
+row_counter_backend/rctr/__pycache__/
+row_counter_backend/rctr/migrations/__pycache__/
+row_counter_backend/dist
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
