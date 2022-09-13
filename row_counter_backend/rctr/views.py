@@ -5,7 +5,7 @@ from rest_framework.decorators import api_view
 from rest_framework import status
 
 from .models import Project
-from .serializers import *
+from .serializers import ProjectSerializer
 
 
 def index(request):
