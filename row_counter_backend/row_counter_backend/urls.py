@@ -21,5 +21,4 @@ from rctr import views
 urlpatterns = [
     path('row-counter/', include('rctr.urls')),
     path('admin/', admin.site.urls),
-
 ]
