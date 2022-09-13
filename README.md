@@ -27,12 +27,6 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
-### Install Django
-
-Once the virtual environment is created and activated, install Django.
-
-`python -m pip install Django`
-
 ### Start the Django Development Server
 
 After Django is installed and the virtual environemnt is active, navigate into the `row_counter_backend` directory, launch the server.
