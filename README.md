@@ -11,6 +11,8 @@ git clone git@github.com:username/crochet-counter.git
 cd crochet-counter
 ```
 
+For environment variables, ensure that `ROW_CTR_SECRET_KEY="testing_local_dev"`
+
 # Backend
 
 ## Getting Started with Django
