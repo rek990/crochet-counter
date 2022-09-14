@@ -104,6 +104,9 @@ const RowCounterForm = () => {
       setSavedRowNumber(data.saved_row_count);
       setDisplayRowNumber(data.saved_row_count);
       setDisplayProjectName(data.project_name);
+      alert(
+        `${retrievedProjectName}, ID ${projectId}, has been successfully saved.`
+      );
       setDisplayRowNumber("");
       setDisplayProjectName("");
       setSavedRowNumber("");
@@ -126,6 +129,7 @@ const RowCounterForm = () => {
       setSavedRowNumber(data.saved_row_count);
       setDisplayRowNumber(data.saved_row_count);
       setDisplayProjectName(data.project_name);
+      alert(`${displayProjectName} has been successfully saved.`);
       setDisplayRowNumber("");
       setDisplayProjectName("");
     }
