@@ -79,7 +79,7 @@ Once work is retrieved, the row counting resumes.
 
 ![Resume Work](https://github.com/rek990/crochet-counter/blob/initial-backend/RCDemoResumeCounting20220730.gif)
 
-Once the user retrieves their saved data, they are able to update their row counts and then save the updated row counts to , keeping the row count on their project current.
+Once the user retrieves their saved data, they are able to update their row counts and then save the updated row count, keeping the row count on their project current.
 
 ![Update](https://github.com/rek990/crochet-counter/blob/initial-backend/RCDemoUpdateWork20220812.gif)
 
