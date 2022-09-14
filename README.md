@@ -36,7 +36,7 @@ cd row_counter_backend
 python manage.py runserver
 ```
 
-The backend server is accessible via localhost:8000
+The backend server is accessible via localhost:8000/row-counter/
 
 # Frontend
 
