@@ -36,7 +36,7 @@ cd row_counter_backend
 python manage.py runserver
 ```
 
-The backend server is accessible via [http://localhost:8000/row-counter/](http://localhost:8000/row-counter/)
+The backend server is accessible via [http://localhost:8000/row-counter/rctr/](http://localhost:8000/row-counter/rctr/). Initially, you will see an empty array that will later be populated with objects that hold all relevant information about a project.
 
 # Frontend
 
