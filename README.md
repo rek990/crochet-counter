@@ -7,7 +7,7 @@ Row Counter (formerly Crochet Counter) is a tool to help fiber artists (crochete
 To view the code on this repo, clone and navigate into the project directory:
 
 ```sh
-git clone git@github.com:username/crochet-counter.git
+git clone git@github.com:rek990/crochet-counter.git
 cd crochet-counter
 ```
 
