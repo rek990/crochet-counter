@@ -43,7 +43,7 @@ The backend server is accessible via localhost:8000/row-counter/
 From the main project directory (`crochet-counter`), install the required packages:
 
 ```sh
-cd crochet_counter
+cd crochet-counter
 npm install
 ```
 
