@@ -36,6 +36,8 @@ cd row_counter_backend
 python manage.py runserver
 ```
 
+The backend server is accessible via localhost:8000
+
 # Frontend
 
 From the main project directory (`crochet-counter`), install the required packages:
