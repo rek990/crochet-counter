@@ -21,7 +21,7 @@ This project utilizes Django as the backend.
 
 ### Python 3 Virtual Environment
 
-Create and activate a Python 3 virtual environment and then install all required packages.
+Within the project directory (`crochet-counter`), create and activate a Python 3 virtual environment and then install all required packages.
 
 ```sh
 python3 -m venv venv
@@ -31,7 +31,7 @@ pip install -r requirements.txt
 
 ### Start the Django Development Server
 
-After Django is installed and the virtual environemnt is active, navigate into the `row_counter_backend` directory, launch the server.
+After Django is installed and the virtual environemnt is active, navigate into the `row_counter_backend` directory, and launch the server.
 
 ```sh
 cd row_counter_backend
@@ -69,17 +69,17 @@ Once a user has entered their information, they can increment and decrement thei
 
 ![Increment/Decrement](https://github.com/rek990/crochet-counter/blob/main/RCDemoIncrement20220730.gif)
 
-## Saving Work
+## Saving and Resuming Work
 
 Should a user stop their work during the course of their project, they have the option of saving their work to continue in the future.
 
 ![Retrieve Work](https://github.com/rek990/crochet-counter/blob/main/RCDemoRetrieveWork20220730.gif)
 
-## Resuming Work and Making Updates
-
 Once work is retrieved, the row counting resumes.
 
 ![Resume Work](https://github.com/rek990/crochet-counter/blob/main/RCDemoResumeCounting20220730.gif)
+
+## Resuming Work and Making Updates
 
 Once the user retrieves their saved data, they are able to update their row counts and then save the updated row count, keeping the row count on their project current.
 
