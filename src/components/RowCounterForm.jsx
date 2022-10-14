@@ -97,7 +97,7 @@ const RowCounterForm = () => {
         body: JSON.stringify({
           saved_row_count: savedRowNumber,
           project_name: retrievedProjectName,
-        }), // this is how you format what goes in the PUT request
+        }),
       });
       const data = await res.json();
       console.log(data);
@@ -122,7 +122,7 @@ const RowCounterForm = () => {
         body: JSON.stringify({
           saved_row_count: displayRowNumber,
           project_name: displayProjectName,
-        }), // this is how you format what goes in the POST request
+        }),
       });
       const data = await res.json();
       console.log(data);
