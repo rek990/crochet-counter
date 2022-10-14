@@ -8,10 +8,6 @@ from .models import Project
 from .serializers import ProjectSerializer
 
 
-def index(request):
-    return HttpResponse("Hello, world. You're at the rctr index.")
-
-
 @api_view(['PUT', 'DELETE'])
 def update_delete_project(request, pk):
     """
