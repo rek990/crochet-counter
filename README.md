@@ -42,12 +42,11 @@ The backend server is accessible via [http://localhost:8000/row-counter/rctr/](h
 
 # Frontend
 
-From the main project directory (`crochet-counter`), install the required packages:
+From the main project directory (`crochet-counter`), install the required package:
 
-```sh
-cd crochet-counter
+`
 npm install
-```
+`
 
 To start the frontend development server:
 
