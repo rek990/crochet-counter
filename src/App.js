@@ -6,24 +6,26 @@ import MainContainer from "./components/MainContainer";
 // import NavBar from "./components/navbar/navbar";
 // import LoginForm from "./components/authentication/Login";
 // import Settings from "./components/navbar/settings";
-// import { AuthProvider } from "./components/authentication/AuthContext";
+import { AuthProvider } from "./components/authentication/AuthContext";
 // import { ProtectedRoute } from "./components/authentication/ProtectedRoute";
 
 import logo from "./MossStitchBlanket.jpg";
 
 function App() {
   return (
-    <Router>
-      <Flex
-        className="App"
-        height="100vh"
-        alignItems="center"
-        justifyContent="center"
-      >
-        <MainContainer />
-        <Image src={logo} fit="fill" flex={1} maxHeight="100vh" zIndex={-1} />
-      </Flex>
-    </Router>
+    <Flex
+      className="App"
+      height="100vh"
+      alignItems="center"
+      justifyContent="center"
+    >
+      {" "}
+      <Router>
+        <AuthProvider></AuthProvider>
+      </Router>
+      <MainContainer />
+      <Image src={logo} fit="fill" flex={1} maxHeight="100vh" zIndex={-1} />
+    </Flex>
   );
 }
 
