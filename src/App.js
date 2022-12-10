@@ -7,7 +7,7 @@ import Navbar from "./components/navbar/Navbar";
 // import LoginForm from "./components/authentication/Login";
 // import Settings from "./components/navbar/settings";
 import { AuthProvider } from "./components/authentication/AuthContext";
-// import { ProtectedRoute } from "./components/authentication/ProtectedRoute";
+import { ProtectedRoute } from "./components/authentication/ProtectedRoute";
 
 import logo from "./MossStitchBlanket.jpg";
 
@@ -23,8 +23,33 @@ function App() {
             justifyContent="center"
           >
             <Navbar />
-            <Routes></Routes>
-            <MainContainer />
+            <Routes>
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    <MainContainer />
+                  </ProtectedRoute>
+                }
+              />
+              {/* <Route path="login" element={<LoginForm />} /> */}
+              {/* <Route
+              path="projects"
+              element={
+                <ProtectedRoute>
+                  <ProjectsContainer />
+                </ProtectedRoute>
+              }
+            /> */}
+              {/* <Route
+            path="settings"
+            element={
+              <ProtectedRoute>
+                <Settings />
+              </ProtectedRoute>
+            }
+          /> */}
+            </Routes>
             <Image
               src={logo}
               fit="fill"
