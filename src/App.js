@@ -3,7 +3,7 @@ import { Flex, Image } from "@chakra-ui/react";
 
 // import "./App.css";
 import MainContainer from "./components/MainContainer";
-// import NavBar from "./components/navbar/navbar";
+import Navbar from "./components/navbar/Navbar";
 // import LoginForm from "./components/authentication/Login";
 // import Settings from "./components/navbar/settings";
 import { AuthProvider } from "./components/authentication/AuthContext";
@@ -21,7 +21,9 @@ function App() {
     >
       {" "}
       <Router>
-        <AuthProvider></AuthProvider>
+        <AuthProvider>
+          <Navbar />
+        </AuthProvider>
       </Router>
       <MainContainer />
       <Image src={logo} fit="fill" flex={1} maxHeight="100vh" zIndex={-1} />
