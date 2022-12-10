@@ -74,7 +74,13 @@ export default function Simple() {
   return (
     <>
       {/* TODO: Change background to "#5F9EA0" (green) or "#A0605F" (red) or white */}
-      <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
+      <Box
+        width="100%"
+        position="fixed"
+        top="0vh"
+        bg={useColorModeValue("gray.100", "gray.900")}
+        px={4}
+      >
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
             size={"md"}

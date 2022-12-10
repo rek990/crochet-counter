@@ -13,21 +13,28 @@ import logo from "./MossStitchBlanket.jpg";
 
 function App() {
   return (
-    <Flex
-      className="App"
-      height="100vh"
-      alignItems="center"
-      justifyContent="center"
-    >
-      {" "}
+    <>
       <Router>
         <AuthProvider>
-          <Navbar />
+          <Flex
+            className="App"
+            height="100vh"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Navbar />
+            <MainContainer />
+            <Image
+              src={logo}
+              fit="fill"
+              flex={1}
+              maxHeight="100vh"
+              zIndex={-1}
+            />
+          </Flex>
         </AuthProvider>
       </Router>
-      <MainContainer />
-      <Image src={logo} fit="fill" flex={1} maxHeight="100vh" zIndex={-1} />
-    </Flex>
+    </>
   );
 }
 
