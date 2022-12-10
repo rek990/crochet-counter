@@ -29,7 +29,7 @@ function App() {
               fit="fill"
               flex={1}
               maxHeight="100vh"
-              zIndex={-1}
+              zIndex={-5}
             />
           </Flex>
         </AuthProvider>

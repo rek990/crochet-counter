@@ -99,7 +99,7 @@ export default function Simple() {
           <Flex
             alignItems={"center"}
             className="userMenuContainer"
-            visibility={!isAuthenticated ? "hidden" : "visible"}
+            // visibility={!isAuthenticated ? "hidden" : "visible"}
           >
             <Menu className="userMenu">
               <MenuButton
