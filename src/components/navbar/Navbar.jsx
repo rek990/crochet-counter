@@ -32,10 +32,10 @@ const NavLink = ({ children }) => (
     rounded={"md"}
     _hover={{
       textDecoration: "none",
-      //   TODO: Change background to "#5F9EA0" (green) or "#A0605F" (red) or white
-      bg: useColorModeValue("gray.200", "gray.700"),
+      bg: useColorModeValue("#A0605F", "#A0605F"),
     }}
     href={"#"}
+    color="white"
   >
     {children}
   </Link>
@@ -73,14 +73,7 @@ export default function Simple() {
 
   return (
     <>
-      {/* TODO: Change background to "#5F9EA0" (green) or "#A0605F" (red) or white */}
-      <Box
-        width="100%"
-        position="fixed"
-        top="0vh"
-        bg={useColorModeValue("gray.100", "gray.900")}
-        px={4}
-      >
+      <Box width="100%" position="fixed" top="0vh" bg="#5F9EA0" px={4}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <IconButton
             size={"md"}
@@ -90,7 +83,9 @@ export default function Simple() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack spacing={8} alignItems={"center"}>
-            <Box fontWeight="bold">Row Counter</Box>
+            <Box fontWeight="bold" color="white">
+              Row Counter
+            </Box>
             <HStack
               as={"nav"}
               spacing={4}
