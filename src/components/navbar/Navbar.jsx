@@ -21,6 +21,6 @@ import {
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
 import { AuthContext } from "../authentication/AuthContext";
-// import axiosInstance from "../crud/Api";
+import axiosInstance from "../crud/Api";
 
 const Links = ["Home", "Projects"];
