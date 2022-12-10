@@ -23,6 +23,7 @@ function App() {
             justifyContent="center"
           >
             <Navbar />
+            <Routes></Routes>
             <MainContainer />
             <Image
               src={logo}
