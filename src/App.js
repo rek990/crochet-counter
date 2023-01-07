@@ -5,7 +5,7 @@ import { Flex, Image } from "@chakra-ui/react";
 import MainContainer from "./components/MainContainer";
 import Navbar from "./components/navbar/Navbar";
 // import LoginForm from "./components/authentication/Login";
-// import Settings from "./components/navbar/settings";
+// import Settings from "./components/navbar/Settings";
 import { AuthProvider } from "./components/authentication/AuthContext";
 import { ProtectedRoute } from "./components/authentication/ProtectedRoute";
 
@@ -27,9 +27,9 @@ function App() {
               <Route
                 index
                 element={
-                  <ProtectedRoute>
-                    <MainContainer />
-                  </ProtectedRoute>
+                  // <ProtectedRoute>
+                  <MainContainer />
+                  // </ProtectedRoute>
                 }
               />
               {/* <Route path="login" element={<LoginForm />} /> */}
