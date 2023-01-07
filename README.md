@@ -60,7 +60,7 @@ The frontend server runs on [http://localhost:3000](http://localhost:3000).
 
 To enter project information, the user inputs the name of their project, along with the row they are starting/continuing their project on, and click "Submit Entry". The project's name and row count will appear on the UI.
 
-![Submit Entry](https://github.com/rek990/crochet-counter/blob/main/RCDemoSubmitEntry20220730.gif)
+![Submit Entry](https://github.com/rek990/crochet-counter/blob/main/readme_gifs/RCDemoSubmitEntry20220730.gif)
 
 ## Increment/Decrement
 
