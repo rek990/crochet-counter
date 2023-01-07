@@ -100,7 +100,6 @@ const RowCounterForm = () => {
         }),
       });
       const data = await res.json();
-      console.log(data);
       setSavedRowNumber(data.saved_row_count);
       setDisplayRowNumber(data.saved_row_count);
       setDisplayProjectName(data.project_name);
@@ -125,7 +124,6 @@ const RowCounterForm = () => {
         }),
       });
       const data = await res.json();
-      console.log(data);
       setSavedRowNumber(data.saved_row_count);
       setDisplayRowNumber(data.saved_row_count);
       setDisplayProjectName(data.project_name);
@@ -143,7 +141,6 @@ const RowCounterForm = () => {
     event.preventDefault();
     const res = await fetch(`${API_URL}rctr/`);
     const data = await res.json();
-    console.log(data);
     setRetreivedProjects(data);
     setRetrievedProjectName(retrievedProjectName);
     data.map((row, index) => {
