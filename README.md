@@ -66,26 +66,26 @@ To enter project information, the user inputs the name of their project, along w
 
 Once a user has entered their information, they can increment and decrement their count by clicking the "+" and "-" `<button/>`'s, respectively.
 
-![Increment/Decrement](https://github.com/rek990/crochet-counter/blob/main/RCDemoIncrement20220730.gif)
+![Increment/Decrement](https://github.com/rek990/crochet-counter/blob/main/readme_gifs/RCDemoIncrement20220730.gif)
 
 ## Saving and Resuming Work
 
 Should a user stop their work during the course of their project, they have the option of saving their work to continue in the future.
 
-![Retrieve Work](https://github.com/rek990/crochet-counter/blob/main/RCDemoRetrieveWork20220730.gif)
+![Retrieve Work](https://github.com/rek990/crochet-counter/blob/main/readme_gifs/RCDemoRetrieveWork20220730.gif)
 
 Once work is retrieved, the row counting resumes.
 
-![Resume Work](https://github.com/rek990/crochet-counter/blob/main/RCDemoResumeCounting20220730.gif)
+![Resume Work](https://github.com/rek990/crochet-counter/blob/main/readme_gifs/RCDemoResumeCounting20220730.gif)
 
 ## Resuming Work and Making Updates
 
 Once the user retrieves their saved data and updates their row counts, they can save the updated row count, keeping the row count on their project current.
 
-![Update](https://github.com/rek990/crochet-counter/blob/main/RCDemoUpdateWork20220812.gif)
+![Update](https://github.com/rek990/crochet-counter/blob/main/readme_gifs/RCDemoUpdateWork20220812.gif)
 
 ## Deleting Projects
 
 Finally, if a user no longer wants to keep information on a given project, they can delete it.
 
-![Delete](https://github.com/rek990/crochet-counter/blob/main/RCDemoDeleteWork20220815.gif)
+![Delete](https://github.com/rek990/crochet-counter/blob/main/readme_gifs/RCDemoDeleteWork20220815.gif)
