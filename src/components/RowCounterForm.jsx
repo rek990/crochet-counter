@@ -10,6 +10,8 @@ import {
   HStack,
   Text,
 } from "@chakra-ui/react";
+import EnterProjectForm from "./EnterProjectForm";
+import InteractiveProjectForm from "./InteractiveProjectForm";
 
 const RowCounterForm = () => {
   const [enterRowNumber, setEnterRowNumber] = useState("");
