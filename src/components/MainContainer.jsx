@@ -1,6 +1,6 @@
 import React from "react";
 import { Flex } from "@chakra-ui/react";
-import RowCounterContainer from "./RowCounterContainer";
+import RowCounterContainer from "../components/row_counter/RowCounterContainer";
 
 const MainContainer = () => {
   return (
