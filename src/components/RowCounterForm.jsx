@@ -27,17 +27,17 @@ const RowCounterForm = () => {
 
   const API_URL = "http://localhost:8000/row-counter/";
 
-  const handleSubmit = () => {
-    setDisplayRowNumber(enterRowNumber);
-    setDisplayProjectName(enterProjectName);
-    setEnterRowNumber("");
-    setEnterProjectName("");
-  };
+  // const handleSubmit = () => {
+  //   setDisplayRowNumber(enterRowNumber);
+  //   setDisplayProjectName(enterProjectName);
+  //   setEnterRowNumber("");
+  //   setEnterProjectName("");
+  // };
 
-  const handleResetEntry = () => {
-    setEnterRowNumber("");
-    setEnterProjectName("");
-  };
+  // const handleResetEntry = () => {
+  //   setEnterRowNumber("");
+  //   setEnterProjectName("");
+  // };
 
   const handleResetAll = () => {
     setDisplayRowNumber("");
@@ -179,8 +179,15 @@ const RowCounterForm = () => {
           borderRadius="15px"
           padding="3%"
         >
-          {/* Insert <EnterProjectForm/> here */}
-          <GridItem id="project-name-form" colSpan={2} colStart={3}>
+          <EnterProjectForm
+            setDisplayRowNumber={setDisplayRowNumber}
+            enterRowNumber={enterRowNumber}
+            setDisplayProjectName={setDisplayProjectName}
+            enterProjectName={enterProjectName}
+            setEnterRowNumber={setEnterRowNumber}
+            setEnterProjectName={setEnterProjectName}
+          />
+          {/* <GridItem id="project-name-form" colSpan={2} colStart={3}>
             <Input
               id="project-name-input"
               placeholder="Enter Project Name"
@@ -238,7 +245,7 @@ const RowCounterForm = () => {
                 Reset Entry
               </Button>
             </HStack>
-          </GridItem>
+          </GridItem> */}
           {/* Insert <InteractiveProjectForm/> here */}
           <GridItem id="retrieve-project-form" colSpan={2}>
             <Input
