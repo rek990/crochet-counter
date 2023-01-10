@@ -22,134 +22,134 @@ const RowCounterForm = () => {
     useState(enterProjectName);
   const [retrievedProjectName, setRetrievedProjectName] =
     useState(displayProjectName);
-  let [retrievedProjects, setRetreivedProjects] = useState([]);
+  let [retrievedProjects, setRetrievedProjects] = useState([]);
   const [projectId, setProjectId] = useState(null);
 
-  const API_URL = "http://localhost:8000/row-counter/";
+  // const API_URL = "http://localhost:8000/row-counter/";
 
-  const handleResetAll = () => {
-    setDisplayRowNumber("");
-    setDisplayProjectName("");
-    setRetrievedProjectName("");
-    setRetreivedProjects([]);
-  };
+  // const handleResetAll = () => {
+  //   setDisplayRowNumber("");
+  //   setDisplayProjectName("");
+  //   setRetrievedProjectName("");
+  //   setRetrievedProjects([]);
+  // };
 
-  const handleDelete = async (event) => {
-    event.preventDefault();
-    if (projectId) {
-      const res = await fetch(`${API_URL}rctr/${projectId}/`, {
-        method: "DELETE",
-      });
-      alert(
-        `${retrievedProjectName}, ID ${projectId}, has been successfully deleted.`
-      );
-      setDisplayRowNumber("");
-      setDisplayProjectName("");
-      setSavedRowNumber("");
-      setRetrievedProjectName("");
-    } else {
-      handleResetAll();
-    }
-  };
+  // const handleDelete = async (event) => {
+  //   event.preventDefault();
+  //   if (projectId) {
+  //     const res = await fetch(`${API_URL}rctr/${projectId}/`, {
+  //       method: "DELETE",
+  //     });
+  //     alert(
+  //       `${retrievedProjectName}, ID ${projectId}, has been successfully deleted.`
+  //     );
+  //     setDisplayRowNumber("");
+  //     setDisplayProjectName("");
+  //     setSavedRowNumber("");
+  //     setRetrievedProjectName("");
+  //   } else {
+  //     handleResetAll();
+  //   }
+  // };
 
-  useEffect(() => {
-    handleDelete();
-  }, []);
+  // useEffect(() => {
+  //   handleDelete();
+  // }, []);
 
-  const handleIncrementor = () => {
-    if (savedRowNumber) {
-      setSavedRowNumber(+savedRowNumber + 1);
-    }
-    if (displayRowNumber) {
-      setDisplayRowNumber(+displayRowNumber + 1);
-    }
-  };
+  // const handleIncrementor = () => {
+  //   if (savedRowNumber) {
+  //     setSavedRowNumber(+savedRowNumber + 1);
+  //   }
+  //   if (displayRowNumber) {
+  //     setDisplayRowNumber(+displayRowNumber + 1);
+  //   }
+  // };
 
-  const handleDecrementor = () => {
-    if (savedRowNumber && savedRowNumber > 0) {
-      setSavedRowNumber(+savedRowNumber - 1);
-    }
-    if (displayRowNumber && displayRowNumber > 0) {
-      setDisplayRowNumber(+displayRowNumber - 1);
-    }
-  };
+  // const handleDecrementor = () => {
+  //   if (savedRowNumber && savedRowNumber > 0) {
+  //     setSavedRowNumber(+savedRowNumber - 1);
+  //   }
+  //   if (displayRowNumber && displayRowNumber > 0) {
+  //     setDisplayRowNumber(+displayRowNumber - 1);
+  //   }
+  // };
 
-  const saveRowCount = async (event) => {
-    event.preventDefault();
-    // PUT request
-    if (projectId) {
-      const res = await fetch(`${API_URL}rctr/${projectId}/`, {
-        method: "PUT",
-        // credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          saved_row_count: savedRowNumber,
-          project_name: retrievedProjectName,
-        }),
-      });
-      const data = await res.json();
-      setSavedRowNumber(data.saved_row_count);
-      setDisplayRowNumber(data.saved_row_count);
-      setDisplayProjectName(data.project_name);
-      alert(
-        `${retrievedProjectName}, ID ${projectId}, has been successfully saved.`
-      );
-      setDisplayRowNumber("");
-      setDisplayProjectName("");
-      setSavedRowNumber("");
-      setRetrievedProjectName("");
-    } else {
-      // POST request
-      const res = await fetch(`${API_URL}rctr/`, {
-        method: "POST",
-        // credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          saved_row_count: displayRowNumber,
-          project_name: displayProjectName,
-        }),
-      });
-      const data = await res.json();
-      setSavedRowNumber(data.saved_row_count);
-      setDisplayRowNumber(data.saved_row_count);
-      setDisplayProjectName(data.project_name);
-      alert(`${displayProjectName} has been successfully saved.`);
-      setDisplayRowNumber("");
-      setDisplayProjectName("");
-    }
-  };
+  // const saveRowCount = async (event) => {
+  //   event.preventDefault();
+  //   // PUT request
+  //   if (projectId) {
+  //     const res = await fetch(`${API_URL}rctr/${projectId}/`, {
+  //       method: "PUT",
+  //       // credentials: "include",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         saved_row_count: savedRowNumber,
+  //         project_name: retrievedProjectName,
+  //       }),
+  //     });
+  //     const data = await res.json();
+  //     setSavedRowNumber(data.saved_row_count);
+  //     setDisplayRowNumber(data.saved_row_count);
+  //     setDisplayProjectName(data.project_name);
+  //     alert(
+  //       `${retrievedProjectName}, ID ${projectId}, has been successfully saved.`
+  //     );
+  //     setDisplayRowNumber("");
+  //     setDisplayProjectName("");
+  //     setSavedRowNumber("");
+  //     setRetrievedProjectName("");
+  //   } else {
+  //     // POST request
+  //     const res = await fetch(`${API_URL}rctr/`, {
+  //       method: "POST",
+  //       // credentials: "include",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         saved_row_count: displayRowNumber,
+  //         project_name: displayProjectName,
+  //       }),
+  //     });
+  //     const data = await res.json();
+  //     setSavedRowNumber(data.saved_row_count);
+  //     setDisplayRowNumber(data.saved_row_count);
+  //     setDisplayProjectName(data.project_name);
+  //     alert(`${displayProjectName} has been successfully saved.`);
+  //     setDisplayRowNumber("");
+  //     setDisplayProjectName("");
+  //   }
+  // };
 
-  useEffect(() => {
-    saveRowCount();
-  }, []);
+  // useEffect(() => {
+  //   saveRowCount();
+  // }, []);
 
-  const resumeRowCount = async (event) => {
-    event.preventDefault();
-    const res = await fetch(`${API_URL}rctr/`);
-    const data = await res.json();
-    setRetreivedProjects(data);
-    setRetrievedProjectName(retrievedProjectName);
-    data.map((row, index) => {
-      if (data[index].project_name === retrievedProjectName) {
-        row = data[index].saved_row_count;
-        setSavedRowNumber(row);
-      }
-    });
-    data.map((id, index) => {
-      if (data[index].project_name === retrievedProjectName) {
-        id = data[index].pk;
-        setProjectId(id);
-      }
-    });
-  };
+  // const resumeRowCount = async (event) => {
+  //   event.preventDefault();
+  //   const res = await fetch(`${API_URL}rctr/`);
+  //   const data = await res.json();
+  //   setRetrievedProjects(data);
+  //   setRetrievedProjectName(retrievedProjectName);
+  //   data.map((row, index) => {
+  //     if (data[index].project_name === retrievedProjectName) {
+  //       row = data[index].saved_row_count;
+  //       setSavedRowNumber(row);
+  //     }
+  //   });
+  //   data.map((id, index) => {
+  //     if (data[index].project_name === retrievedProjectName) {
+  //       id = data[index].pk;
+  //       setProjectId(id);
+  //     }
+  //   });
+  // };
 
-  useEffect(() => {
-    resumeRowCount(() => {});
-  }, []);
+  // useEffect(() => {
+  //   resumeRowCount(() => {});
+  // }, []);
 
   return (
     <>
@@ -175,8 +175,21 @@ const RowCounterForm = () => {
             setEnterRowNumber={setEnterRowNumber}
             setEnterProjectName={setEnterProjectName}
           />
-          {/* Insert <InteractiveProjectForm/> here */}
-          <GridItem id="retrieve-project-form" colSpan={2}>
+          <InteractiveProjectForm
+            setDisplayRowNumber={setDisplayRowNumber}
+            setDisplayProjectName={setDisplayProjectName}
+            setRetrievedProjectName={setRetrievedProjectName}
+            setRetrievedProjects={setRetrievedProjects}
+            projectId={projectId}
+            retrievedProjectName={retrievedProjectName}
+            setSavedRowNumber={setSavedRowNumber}
+            savedRowNumber={savedRowNumber}
+            displayRowNumber={displayRowNumber}
+            displayProjectName={displayProjectName}
+            setProjectId={setProjectId}
+            retrievedProjects={retrievedProjects}
+          />
+          {/* <GridItem id="retrieve-project-form" colSpan={2}>
             <Input
               id="retrieve-project-input"
               placeholder="Retrieved Project"
@@ -328,7 +341,7 @@ const RowCounterForm = () => {
                 Delete
               </Button>
             </HStack>
-          </GridItem>
+          </GridItem> */}
           <GridItem id="decrementor-button-container"></GridItem>
           <GridItem id="save-row-button"></GridItem>
           <GridItem id="resume-button"></GridItem>
