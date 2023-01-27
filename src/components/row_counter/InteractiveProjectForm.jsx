@@ -116,10 +116,6 @@ const InteractiveProjectForm = ({
     }
   };
 
-  useEffect(() => {
-    saveRowCount();
-  }, []);
-
   const handleResetAll = () => {
     setDisplayRowNumber("");
     setDisplayProjectName("");
@@ -144,10 +140,6 @@ const InteractiveProjectForm = ({
       handleResetAll();
     }
   };
-
-  useEffect(() => {
-    handleDelete();
-  }, []);
 
   return (
     <>
