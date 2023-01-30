@@ -22,6 +22,9 @@ const InteractiveProjectForm = ({
   displayProjectName,
   setProjectId,
   retrievedProjects,
+  setProjectCreated,
+  setProjectUpdated,
+  setProjectDeleted,
 }) => {
   const API_URL = "http://localhost:8000/row-counter/";
 
@@ -86,9 +89,10 @@ const InteractiveProjectForm = ({
       setSavedRowNumber(data.saved_row_count);
       setDisplayRowNumber(data.saved_row_count);
       setDisplayProjectName(data.project_name);
-      alert(
-        `${retrievedProjectName}, ID ${projectId}, has been successfully saved.`
-      );
+      // alert(
+      // `${retrievedProjectName}, ID ${projectId}, has been successfully saved.`
+      // );
+      setProjectUpdated(true);
       setDisplayRowNumber("");
       setDisplayProjectName("");
       setSavedRowNumber("");
@@ -110,7 +114,8 @@ const InteractiveProjectForm = ({
       setSavedRowNumber(data.saved_row_count);
       setDisplayRowNumber(data.saved_row_count);
       setDisplayProjectName(data.project_name);
-      alert(`${displayProjectName} has been successfully saved.`);
+      // alert(`${displayProjectName} has been successfully saved.`);
+      setProjectCreated(true);
       setDisplayRowNumber("");
       setDisplayProjectName("");
     }
@@ -129,9 +134,10 @@ const InteractiveProjectForm = ({
       const res = await fetch(`${API_URL}rctr/${projectId}/`, {
         method: "DELETE",
       });
-      alert(
-        `${retrievedProjectName}, ID ${projectId}, has been successfully deleted.`
-      );
+      // alert(
+      //   `${retrievedProjectName}, ID ${projectId}, has been successfully deleted.`
+      // );
+      setProjectDeleted(true);
       setDisplayRowNumber("");
       setDisplayProjectName("");
       setSavedRowNumber("");

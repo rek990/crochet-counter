@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Grid, FormControl } from "@chakra-ui/react";
+import { Grid, FormControl, Alert, AlertIcon } from "@chakra-ui/react";
 import EnterProjectForm from "./EnterProjectForm";
 import InteractiveProjectForm from "./InteractiveProjectForm";
 
@@ -14,9 +14,30 @@ const RowCounterForm = () => {
     useState(displayProjectName);
   let [retrievedProjects, setRetrievedProjects] = useState([]);
   const [projectId, setProjectId] = useState(null);
+  const [projectCreated, setProjectCreated] = useState(false);
+  const [projectUpdated, setProjectUpdated] = useState(false);
+  const [projectDeleted, setProjectDeleted] = useState(false);
 
   return (
     <>
+      {projectCreated && (
+        <Alert status="success" variant="subtle">
+          <AlertIcon />
+          {`${displayProjectName} has been successfully saved.`}
+        </Alert>
+      )}
+      {projectUpdated && (
+        <Alert status="success" variant="subtle">
+          <AlertIcon />
+          {`${displayProjectName}, ID ${projectId} has been successfully saved.`}
+        </Alert>
+      )}
+      {projectDeleted && (
+        <Alert status="success" variant="subtle">
+          <AlertIcon />
+          {`${displayProjectName}, ID ${projectId} has been successfully deleted.`}
+        </Alert>
+      )}
       <FormControl>
         {/* Note to adjust the templateRows and/or Columns to accommodate for double- and triple-digit row numbers. */}
         <Grid
@@ -52,6 +73,9 @@ const RowCounterForm = () => {
             displayProjectName={displayProjectName}
             setProjectId={setProjectId}
             retrievedProjects={retrievedProjects}
+            setProjectCreated={setProjectCreated}
+            setProjectUpdated={setProjectUpdated}
+            setProjectedDeleted={setProjectDeleted}
           />
         </Grid>
       </FormControl>
