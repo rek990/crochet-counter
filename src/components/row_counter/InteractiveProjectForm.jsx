@@ -86,13 +86,13 @@ const InteractiveProjectForm = ({
         }),
       });
       const data = await res.json();
+      setProjectUpdated(true);
       setSavedRowNumber(data.saved_row_count);
       setDisplayRowNumber(data.saved_row_count);
       setDisplayProjectName(data.project_name);
       // alert(
       // `${retrievedProjectName}, ID ${projectId}, has been successfully saved.`
       // );
-      setProjectUpdated(true);
       setDisplayRowNumber("");
       setDisplayProjectName("");
       setSavedRowNumber("");
@@ -111,6 +111,7 @@ const InteractiveProjectForm = ({
         }),
       });
       const data = await res.json();
+
       setSavedRowNumber(data.saved_row_count);
       setDisplayRowNumber(data.saved_row_count);
       setDisplayProjectName(data.project_name);
