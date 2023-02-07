@@ -7,6 +7,8 @@ import {
   Flex,
   HStack,
   Text,
+  Alert,
+  AlertIcon,
 } from "@chakra-ui/react";
 
 const InteractiveProjectForm = ({
@@ -34,6 +36,7 @@ const InteractiveProjectForm = ({
     const data = await res.json();
     setRetrievedProjects(data);
     setRetrievedProjectName(retrievedProjectName);
+    setDisplayProjectName(retrievedProjectName);
     data.map((row, index) => {
       if (data[index].project_name === retrievedProjectName) {
         row = data[index].saved_row_count;
@@ -93,10 +96,10 @@ const InteractiveProjectForm = ({
       // alert(
       // `${retrievedProjectName}, ID ${projectId}, has been successfully saved.`
       // );
-      setDisplayRowNumber("");
-      setDisplayProjectName("");
-      setSavedRowNumber("");
-      setRetrievedProjectName("");
+      // setDisplayRowNumber("");
+      // setDisplayProjectName("");
+      // setSavedRowNumber("");
+      // setRetrievedProjectName("");
     } else {
       // POST request
       const res = await fetch(`${API_URL}rctr/`, {
@@ -117,8 +120,8 @@ const InteractiveProjectForm = ({
       setDisplayProjectName(data.project_name);
       // alert(`${displayProjectName} has been successfully saved.`);
       setProjectCreated(true);
-      setDisplayRowNumber("");
-      setDisplayProjectName("");
+      // setDisplayRowNumber("");
+      // setDisplayProjectName("");
     }
   };
 
@@ -127,6 +130,9 @@ const InteractiveProjectForm = ({
     setDisplayProjectName("");
     setRetrievedProjectName("");
     setRetrievedProjects([]);
+    setProjectCreated(false);
+    setProjectUpdated(false);
+    setProjectDeleted(false);
   };
 
   const handleDelete = async (event) => {
@@ -139,10 +145,10 @@ const InteractiveProjectForm = ({
       //   `${retrievedProjectName}, ID ${projectId}, has been successfully deleted.`
       // );
       setProjectDeleted(true);
-      setDisplayRowNumber("");
-      setDisplayProjectName("");
-      setSavedRowNumber("");
-      setRetrievedProjectName("");
+      // setDisplayRowNumber("");
+      // setDisplayProjectName("");
+      // setSavedRowNumber("");
+      // setRetrievedProjectName("");
     } else {
       handleResetAll();
     }
@@ -192,7 +198,8 @@ const InteractiveProjectForm = ({
             textAlign="center"
             className="display-project-name"
           >
-            <b>Project:&nbsp;{displayProjectName}</b>
+            {/* <b>Project:&nbsp;{displayProjectName}</b> */}
+            <b>Project:&nbsp;</b>
           </Text>
           {retrievedProjects.map((data, index) => {
             return (

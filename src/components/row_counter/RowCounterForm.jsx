@@ -17,29 +17,29 @@ const RowCounterForm = () => {
   const [projectCreated, setProjectCreated] = useState(false);
   const [projectUpdated, setProjectUpdated] = useState(false);
   const [projectDeleted, setProjectDeleted] = useState(false);
-  console.log(displayProjectName);
+  console.log("displayProjectName", displayProjectName);
 
   return (
     <>
       {projectCreated && (
         <Alert status="success" variant="subtle">
           <AlertIcon />
-          {/* {`${displayProjectName} has been successfully saved.`} */}
-          Project Created!
+          {`${displayProjectName} has been successfully saved.`}
+          {/* Project Created! */}
         </Alert>
       )}
       {projectUpdated && (
         <Alert status="success" variant="subtle">
           <AlertIcon />
-          {/* {`${displayProjectName}, ID ${projectId} has been successfully saved.`} */}
-          Project Updated!
+          {`${displayProjectName}, ID ${projectId} has been successfully saved.`}
+          {/* Project Updated! */}
         </Alert>
       )}
       {projectDeleted && (
         <Alert status="success" variant="subtle">
           <AlertIcon />
-          {/* {`${displayProjectName}, ID ${projectId} has been successfully deleted.`} */}
-          Project Deleted!
+          {`${displayProjectName}, ID ${projectId} has been successfully deleted.`}
+          {/* Project Deleted! */}
         </Alert>
       )}
       <FormControl>
@@ -79,6 +79,7 @@ const RowCounterForm = () => {
             retrievedProjects={retrievedProjects}
             setProjectCreated={setProjectCreated}
             setProjectUpdated={setProjectUpdated}
+            projectDeleted={projectDeleted}
             setProjectDeleted={setProjectDeleted}
           />
         </Grid>
